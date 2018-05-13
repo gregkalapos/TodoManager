@@ -4,7 +4,6 @@
     x:Class="ToDoManager.Views.PomodoroPage">
     <ContentPage.Content>
         <StackLayout>
-            
             <Label Margin="10" FontSize="Large" VerticalTextAlignment="Center" HorizontalOptions="Center" Text="{Binding TimeLeftText, Mode=TwoWay}" />
 
             <Label Text="Pomodoro length:" />

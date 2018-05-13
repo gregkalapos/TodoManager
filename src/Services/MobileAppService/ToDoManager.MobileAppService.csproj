@@ -21,8 +21,8 @@
   <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
 </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ToDoManager.Data\ToDoManager.Data.csproj" />
-    <ProjectReference Include="..\ToDoManager.Model\ToDoManager.Model.csproj" />
-  </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\ToDoManager.Data\ToDoManager.Data.csproj" />
+  <ProjectReference Include="..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj" />
+</ItemGroup>
 </Project>

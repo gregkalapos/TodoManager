@@ -7,6 +7,7 @@
 		<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
+        
 		<StackLayout>
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                 <Button Text="Open" Command="{Binding LoadItemsCommand}" />
