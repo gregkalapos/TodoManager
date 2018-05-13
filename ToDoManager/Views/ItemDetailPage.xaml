@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ToDoManager.ItemDetailPage" 
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    Title="{Binding Title}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+           <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+          <StackLayout Grid.Row="0" Spacing="20" Padding="15">
+              <Label Text="{Binding SelectedItem.Description}" FontSize="Small" />
+              <StackLayout Orientation="Horizontal">
+                  <Label Text="Created: " />
+                  <Label Text="{Binding SelectedItem.Created}" />
+              </StackLayout>
+          </StackLayout>
+            <Button Margin="0,0,30,0" Text="Done" Command="{Binding DoneButtonTouched}" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                 <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+              <StackLayout  Orientation="Horizontal">
+                <Label Text="Number of pomodoros: "/>
+                <Label Text="{Binding NumberOfPomodoros}"/>
+            </StackLayout>
+            <microcharts:ChartView Grid.Row="1"  x:Name="chartView" BackgroundColor="AliceBlue" 
+                               Chart="{Binding PomodoroChart, Mode=TwoWay}" />
+          
+        </Grid>
+        <Button Margin="0,0,0,10" Text="Start Pomodoro" Grid.Row="2" Clicked="Handle_Clicked">
+        </Button>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ToDoManager.NewItemPage"
+    Title="New Item">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Save" Command="{Binding SaveButtonTouched}" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout Spacing="20" Padding="15">
+			<Label Text="Text" FontSize="Medium" />
+			<Entry Text="{Binding NewItemTitle}" FontSize="Small" />
+			<Label Text="Description" FontSize="Medium" />
+			<Editor HeightRequest="100" Text="{Binding NewItemDescription}" FontSize="Small" Margin="0" />
+            <ActivityIndicator IsRunning="{Binding IsLoading}" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
