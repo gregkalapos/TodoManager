@@ -16,7 +16,8 @@ namespace ToDoManager.MobileAppService.Converters
                 Title = model.Title,
                 User = model.User,
 				Description = model.Description,
-				IsDone = model.IsDone
+				IsDone = model.IsDone,
+				FinishedDate = model.FinishedDate
             };
         }
 
@@ -29,7 +30,8 @@ namespace ToDoManager.MobileAppService.Converters
 				Title = entity.Title,
 				User = entity.User,
 				Description = entity.Description,
-				IsDone = entity.IsDone
+				IsDone = entity.IsDone,
+				FinishedDate = entity.FinishedDate
 			};
 		}
     }

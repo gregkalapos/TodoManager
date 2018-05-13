@@ -45,12 +45,12 @@ namespace ToDoManager
 					NumberOfPomodoros = pomodoros.Count;
 				}
 			}
-		} 
+		}
 
 		public ItemDetailViewModel(Xamarin.Forms.INavigation navigation, ToDoItemModel item = null)
 		{
 			_navigation = navigation;
-			PomodoroChart = new BarChart(){Entries = new List<Entry>()};
+			PomodoroChart = new BarChart() { Entries = new List<Entry>() };
 			Title = item?.Title;
 			SelectedItem = item;
 			PopulateChart();
@@ -61,15 +61,12 @@ namespace ToDoManager
 				NumberOfPomodoros++;
 			});
 
-			DoneButtonTouched = new Xamarin.Forms.Command( async() =>
+			DoneButtonTouched = new Xamarin.Forms.Command(async () =>
 			{
-				var isSuccess = await DataStore.SetDoneTodo(SelectedItem.Id);
+				var newItem = await DataStore.SetDoneTodo(SelectedItem.Id);
 
-				if(isSuccess)
-				{
-					Xamarin.Forms.MessagingCenter.Send(this, Consts.DoneTodoItemStr, SelectedItem.Id);
-					await _navigation.PopAsync();
-				}
+				Xamarin.Forms.MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
+				await _navigation.PopAsync();	
 			});
 		}
 

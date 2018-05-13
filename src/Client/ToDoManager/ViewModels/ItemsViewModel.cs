@@ -40,15 +40,14 @@ namespace ToDoManager
 			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => DataStore.GetDoneTodoItems()));
 			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => DataStore.GetAllTodoItems()));
 
-			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(this, Consts.AddNewToDoItemStr, (obj, item) =>
+			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(this, Consts.AddNewToDoItemStr, (obj, newTodoItem) =>
 			{
-				var _item = item as ToDoItemModel;
-				Items.Add(_item);
+				Items.Insert(0, newTodoItem);
 			});
 
-			MessagingCenter.Subscribe<ItemDetailViewModel, Guid>(this, Consts.DoneTodoItemStr, (obj, removedItemsGuid) =>
+			MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(this, Consts.DoneTodoItemStr, (obj, finishedItem) =>
 			{
-				var itemToRemove = Items.Where(n => n.Id == removedItemsGuid).FirstOrDefault();
+				var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
 
 				if(itemToRemove != null)
 				{

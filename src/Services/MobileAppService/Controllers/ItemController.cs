@@ -109,9 +109,10 @@ namespace ToDoManager.Controllers
 			if(todoItemToUpdate != null)
 			{
 				todoItemToUpdate.IsDone = true;
+				todoItemToUpdate.FinishedDate = DateTime.UtcNow;
 
 				dbContext.SaveChanges();
-				return Ok(todoItemToUpdate);
+				return Ok(ToDoItemConverter.FromEntityToModel(todoItemToUpdate));
 			}
 
 			return BadRequest($"In {nameof(TodoItemDone)}, error setting IsDone for {doneTodoGuid}");

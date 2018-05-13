@@ -7,7 +7,7 @@ namespace ToDoManager
 	public interface IDataStore<T>
 	{
 		Task<T> AddItemAsync(T item);
-		Task<bool> SetDoneTodo(Guid id);
+		Task<T> SetDoneTodo(Guid id);
 		Task<bool> DeleteItemAsync(Guid id);
 		Task<T> GetItemAsync(Guid id);
 		Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);

@@ -61,7 +61,7 @@ namespace ToDoManager
 			return await Task.FromResult(items);
 		}
 
-		public Task<bool> SetDoneTodo(Guid id)
+		public Task<ToDoItemModel> SetDoneTodo(Guid id)
 		{
 			throw new NotImplementedException();
 		}

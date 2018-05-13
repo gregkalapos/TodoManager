@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 using Newtonsoft.Json;
 using ToDoManager.Model;
@@ -30,7 +31,16 @@ namespace ToDoManager
 				items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<ToDoItemModel>>(json));
 			}
 
-			return items;
+			foreach (var item in items)
+			{
+				item.Created = item.Created.ToLocalTime();
+				if(item.IsDone)
+				{
+					item.FinishedDate = item.FinishedDate.ToLocalTime();
+				}
+			}
+
+			return items.OrderByDescending(n => n.Created).ToList();
 		}
 
 		public async Task<ToDoItemModel> GetItemAsync(Guid id)
@@ -64,6 +74,8 @@ namespace ToDoManager
 				try
 				{
 					var retVal = JsonConvert.DeserializeObject<ToDoItemModel>(strRet);
+					retVal.Created = retVal.Created.ToLocalTime();
+					retVal.FinishedDate = retVal.FinishedDate.ToLocalTime();
 					return retVal;
 				}
 				catch (Exception)
@@ -77,14 +89,14 @@ namespace ToDoManager
 			}
 		}
 
-		public async Task<bool> SetDoneTodo(Guid itemGuid)
+		public async Task<ToDoItemModel> SetDoneTodo(Guid itemGuid)
 		{
 			if (itemGuid == Guid.Empty)
-				return false;
+				throw new Exception("Cannot set TodoItem with empty guid to 'done'");
 
 			var serializedItem = JsonConvert.SerializeObject(itemGuid);
 			var response = await client.PostAsync("api/Item/TodoItemDone", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-			return response.IsSuccessStatusCode;
+			return await ProcessResponse(response);
 		}
 
 		public async Task<bool> DeleteItemAsync(Guid id)
@@ -99,13 +111,15 @@ namespace ToDoManager
 		public async Task<IEnumerable<ToDoItemModel>> GetAllTodoItems()
 		{
 			var json = await client.GetStringAsync($"api/item/GetAllTodoItems");
-			return await Task.Run(() => JsonConvert.DeserializeObject<List<ToDoItemModel>>(json));
+			return await Task.Run(() => JsonConvert.DeserializeObject<List<ToDoItemModel>>(json)
+			                             .OrderByDescending(n => n.Created).ToList());
 		}
 
 		public async Task<IEnumerable<ToDoItemModel>> GetDoneTodoItems()
 		{
 			var json = await client.GetStringAsync($"api/item/GetDoneTodoItems");
-			return await Task.Run(() => JsonConvert.DeserializeObject<List<ToDoItemModel>>(json));
+			return await Task.Run(() => JsonConvert.DeserializeObject<List<ToDoItemModel>>(json)
+			                      .OrderByDescending(n => n.Created).ToList());
 		}
 	}
 }
