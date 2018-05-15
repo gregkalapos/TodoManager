@@ -7,6 +7,7 @@ using System.Linq;
 
 using Newtonsoft.Json;
 using ToDoManager.Model;
+using ToDoManager.ClientShared;
 
 namespace ToDoManager
 {
@@ -18,7 +19,7 @@ namespace ToDoManager
 		public CloudDataStore()
 		{
 			client = new HttpClient();
-			client.BaseAddress = new Uri($"{App.BackendUrl}/");
+			client.BaseAddress = new Uri($"{Consts.BackendUrl}/");
 
 			items = new List<ToDoItemModel>();
 		}

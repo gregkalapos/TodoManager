@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using ToDoManager.Model;
 using ToDoManager.Services;
-using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Linq;
 using System.Collections.ObjectModel;
+using ToDoManager.ClientShared.Tools;
+using ToDoManager.ClientShared.Services;
 
 namespace ToDoManager.ViewModels
 {
@@ -107,7 +108,7 @@ namespace ToDoManager.ViewModels
 							{
 								var res = await _dataStorage.AddNewPomodoroItemAsync(newItem);
 
-								MessagingCenter.Send(this, Consts.AddNewToDoItemStr, res);
+								//MessagingCenter.Send(this, Consts.AddNewToDoItemStr, res);
 								await _navigation.PopAsync();
 							}
 							catch(Exception e)

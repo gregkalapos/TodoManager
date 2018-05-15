@@ -1,5 +1,6 @@
 ﻿using System;
 using ToDoManager.Model;
+using ToDoManager.Services;
 using ToDoManager.ViewModels;
 using ToDoManager.Views;
 using Xamarin.Forms;
@@ -10,7 +11,7 @@ namespace ToDoManager
     {
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-			Navigation.PushAsync(new PomodoroPage(new PomodoroViewModel(this.viewModel.SelectedItem, Navigation)));
+			Navigation.PushAsync(new PomodoroPage(new PomodoroViewModel(this.viewModel.SelectedItem, new XamarinFormsNavigation(Navigation))));
         }
 
         ItemDetailViewModel viewModel;
@@ -26,7 +27,7 @@ namespace ToDoManager
                 Description = "This is an item description."
             };
 
-			viewModel = new ItemDetailViewModel(Navigation,item);
+			viewModel = new ItemDetailViewModel(new XamarinFormsNavigation(Navigation),item);
             BindingContext = viewModel;
         }
 

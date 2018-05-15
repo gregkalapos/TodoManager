@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ToDoManager.Model;
+using ToDoManager.Services;
 using Xamarin.Forms;
 
 namespace ToDoManager
@@ -14,7 +15,7 @@ namespace ToDoManager
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+			BindingContext = viewModel = new ItemsViewModel(new CloudDataStore());
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -23,7 +24,7 @@ namespace ToDoManager
             if (item == null)
                 return;
 
-			await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(Navigation,item)));
+			await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(new XamarinFormsNavigation(Navigation),item)));
 
             //Manually deselect item
             ItemsListView.SelectedItem = null;

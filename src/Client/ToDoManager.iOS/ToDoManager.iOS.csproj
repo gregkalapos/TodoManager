@@ -172,6 +172,10 @@
       <Project>{9DCCB10E-9632-41FB-A347-A2B37D92D3DB}</Project>
       <Name>ToDoManager.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">
+      <Project>{B8A19AE8-7461-4DBE-8400-57DB1C95BCE8}</Project>
+      <Name>ToDoManager.ClientShared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.targets')" />

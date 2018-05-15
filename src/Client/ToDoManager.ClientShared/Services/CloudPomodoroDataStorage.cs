@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using ToDoManager.ClientShared;
 using ToDoManager.Model;
 
 namespace ToDoManager.Services
@@ -16,7 +17,7 @@ namespace ToDoManager.Services
         public CloudPomodoroDataStorage()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri($"{App.BackendUrl}/");
+            client.BaseAddress = new Uri($"{Consts.BackendUrl}/");
 
         }
 

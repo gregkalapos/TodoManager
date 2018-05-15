@@ -9,12 +9,6 @@
     <Import_RootNamespace>ToDoManager</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CloudDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\MockDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AboutViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -34,12 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\PomodoroPage.xaml.cs">
       <DependentUpon>PomodoroPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PomodoroViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\IPomodoroDataStorage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CloudPomodoroDataStorage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewItemViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Consts.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\XamarinFormsNavigation.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -54,5 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
 </Project>

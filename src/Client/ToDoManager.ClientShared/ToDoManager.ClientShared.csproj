@@ -6,8 +6,13 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
+    <Folder Include="Tools\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

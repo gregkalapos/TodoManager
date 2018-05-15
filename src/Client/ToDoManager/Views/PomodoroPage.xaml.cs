@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ToDoManager.Model;
+using ToDoManager.Services;
 using ToDoManager.ViewModels;
 using Xamarin.Forms;
 
@@ -20,7 +21,7 @@ namespace ToDoManager.Views
         public PomodoroPage()
         {
             InitializeComponent();
-			_vm = new PomodoroViewModel(new ToDoItemModel(), Navigation)
+			_vm = new PomodoroViewModel(new ToDoItemModel(), new XamarinFormsNavigation(Navigation))
             {
                 Title = "TestTitle",
             };

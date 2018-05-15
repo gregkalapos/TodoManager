@@ -1,6 +1,7 @@
 ﻿using System;
+using ToDoManager.ClientShared.Services;
+using ToDoManager.ClientShared.Tools;
 using ToDoManager.Model;
-using Xamarin.Forms;
 
 namespace ToDoManager.ViewModels
 {
@@ -13,6 +14,7 @@ namespace ToDoManager.ViewModels
         public Command SaveButtonTouched { get; }
 
         private INavigation navigation;
+		private IDataStore<ToDoItemModel> _dataStore;
 
         public NewItemViewModel(INavigation navigation)
         {
@@ -38,8 +40,8 @@ namespace ToDoManager.ViewModels
 
 					try
 					{
-						var retVal = await DataStore.AddItemAsync(newTodoItem);
-						MessagingCenter.Send(this, Consts.AddNewToDoItemStr, retVal); 
+						var retVal = await _dataStore.AddItemAsync(newTodoItem);
+						//MessagingCenter.Send(this, Consts.AddNewToDoItemStr, retVal); 
 						await navigation.PopAsync();
 					}
 					catch(Exception e)

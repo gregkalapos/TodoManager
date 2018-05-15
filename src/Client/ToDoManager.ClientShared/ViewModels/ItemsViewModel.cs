@@ -4,9 +4,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Linq;
 using ToDoManager.Model;
-using ToDoManager.ViewModels;
-using Xamarin.Forms;
 using System.Collections.Generic;
+using ToDoManager.ClientShared.Tools;
 
 namespace ToDoManager
 {
@@ -32,28 +31,31 @@ namespace ToDoManager
 		/// <value>The load all items command.</value>
 		public Command LoadAllItemsCommand { get; }
 
-		public ItemsViewModel()
+		private IDataStore<ToDoItemModel> _dataStore;
+
+		public ItemsViewModel(IDataStore<ToDoItemModel> dataStore)
 		{
+			_dataStore = dataStore;
 			Title = "Browse";
 			Items = new ObservableCollection<ToDoItemModel>();
-			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => DataStore.GetItemsAsync(true)));
-			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => DataStore.GetDoneTodoItems()));
-			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => DataStore.GetAllTodoItems()));
+			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetItemsAsync(true)));
+			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetDoneTodoItems()));
+			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetAllTodoItems()));
 
-			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(this, Consts.AddNewToDoItemStr, (obj, newTodoItem) =>
-			{
-				Items.Insert(0, newTodoItem);
-			});
+			//MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(this, Consts.AddNewToDoItemStr, (obj, newTodoItem) =>
+			//{
+			//	Items.Insert(0, newTodoItem);
+			//});
 
-			MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(this, Consts.DoneTodoItemStr, (obj, finishedItem) =>
-			{
-				var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
+			//MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(this, Consts.DoneTodoItemStr, (obj, finishedItem) =>
+			//{
+			//	var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
 
-				if(itemToRemove != null)
-				{
-					Items.Remove(itemToRemove);
-				}
-			});
+			//	if(itemToRemove != null)
+			//	{
+			//		Items.Remove(itemToRemove);
+			//	}
+			//});
 		}
 
 		async Task ExecuteLoadItemsCommand(Func<Task<IEnumerable<ToDoItemModel>>> downloadMethod)

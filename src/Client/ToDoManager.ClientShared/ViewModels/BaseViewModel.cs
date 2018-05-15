@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ToDoManager.Model;
-using Xamarin.Forms;
 
 namespace ToDoManager
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<ToDoItemModel> DataStore => DependencyService.Get<IDataStore<ToDoItemModel>>() ?? new MockDataStore();
-
         bool isBusy = false;
         public bool IsBusy
         {
