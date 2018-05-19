@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using ToDoManager.ViewModels;
 using ToDoManager.ClientShared.Services;
 using ToDoManager.ClientShared.Tools;
+using ToDoManager.ClientShared;
 
 namespace ToDoManager
 {
@@ -55,17 +56,20 @@ namespace ToDoManager
 			SelectedItem = item;
 			PopulateChart();
 
-			//Xamarin.Forms.MessagingCenter.Subscribe<PomodoroViewModel, PomodoroItemModel>(this, Consts.AddNewToDoItemStr, (obj, newPomodoroItem) =>
-			//{
-			//	Pomodoros.Add(newPomodoroItem);
-			//	NumberOfPomodoros++;
-			//});
+			MessagingCenter.Subscribe<PomodoroViewModel, PomodoroItemModel>(Consts.AddNewToDoItemStr, (newPomodoroItem) =>
+			{
+				if (newPomodoroItem is PomodoroItemModel newItem)
+				{
+					Pomodoros.Add(newItem);
+					NumberOfPomodoros++;
+				}
+			});
 
 			DoneButtonTouched = new Command(async () =>
 			{
 				var newItem = await DataStore.SetDoneTodo(SelectedItem.Id);
 
-				//Xamarin.Forms.MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
+				MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
 				await _navigation.PopAsync();	
 			});
 		}

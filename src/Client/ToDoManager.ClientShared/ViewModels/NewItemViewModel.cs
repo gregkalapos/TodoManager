@@ -1,4 +1,5 @@
 ﻿using System;
+using ToDoManager.ClientShared;
 using ToDoManager.ClientShared.Services;
 using ToDoManager.ClientShared.Tools;
 using ToDoManager.Model;
@@ -41,7 +42,7 @@ namespace ToDoManager.ViewModels
 					try
 					{
 						var retVal = await _dataStore.AddItemAsync(newTodoItem);
-						//MessagingCenter.Send(this, Consts.AddNewToDoItemStr, retVal); 
+						MessagingCenter.Send(this, Consts.AddNewToDoItemStr, retVal); 
 						await navigation.PopAsync();
 					}
 					catch(Exception e)

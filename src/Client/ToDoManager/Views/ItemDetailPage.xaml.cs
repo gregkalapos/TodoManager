@@ -29,6 +29,8 @@ namespace ToDoManager
 
 			viewModel = new ItemDetailViewModel(new XamarinFormsNavigation(Navigation),item);
             BindingContext = viewModel;
+
+			//Xamarin.Forms.MessagingCenter.Subscribe()
         }
 
         public ItemDetailPage(ItemDetailViewModel viewModel)

@@ -6,6 +6,8 @@ using System.Linq;
 using ToDoManager.Model;
 using System.Collections.Generic;
 using ToDoManager.ClientShared.Tools;
+using ToDoManager.ViewModels;
+using ToDoManager.ClientShared;
 
 namespace ToDoManager
 {
@@ -42,20 +44,24 @@ namespace ToDoManager
 			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetDoneTodoItems()));
 			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetAllTodoItems()));
 
-			//MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(this, Consts.AddNewToDoItemStr, (obj, newTodoItem) =>
-			//{
-			//	Items.Insert(0, newTodoItem);
-			//});
+			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(Consts.AddNewToDoItemStr, (newTodoItem) =>
+			{
+				if(newTodoItem is ToDoItemModel todoItem)
+					Items.Insert(0, todoItem);
+			});
 
-			//MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(this, Consts.DoneTodoItemStr, (obj, finishedItem) =>
-			//{
-			//	var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
+			MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(Consts.DoneTodoItemStr, (finishedItemMsg) =>
+			{
+				if (finishedItemMsg is ToDoItemModel finishedItem)
+				{
+					var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
 
-			//	if(itemToRemove != null)
-			//	{
-			//		Items.Remove(itemToRemove);
-			//	}
-			//});
+					if (itemToRemove != null)
+					{
+						Items.Remove(itemToRemove);
+					}
+				}
+			});
 		}
 
 		async Task ExecuteLoadItemsCommand(Func<Task<IEnumerable<ToDoItemModel>>> downloadMethod)
