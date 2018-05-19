@@ -12,7 +12,7 @@ namespace ToDoManager
 
         public NewItemPage()
         {
-			this.dataContext = new NewItemViewModel(new XamarinFormsNavigation(Navigation));
+			this.dataContext = new NewItemViewModel(new XamarinFormsNavigation(Navigation), new CloudDataStore());
             InitializeComponent();
 
             this.BindingContext = dataContext;

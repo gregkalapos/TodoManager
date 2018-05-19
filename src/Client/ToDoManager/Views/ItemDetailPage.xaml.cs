@@ -27,7 +27,7 @@ namespace ToDoManager
                 Description = "This is an item description."
             };
 
-			viewModel = new ItemDetailViewModel(new XamarinFormsNavigation(Navigation),item);
+			viewModel = new ItemDetailViewModel(new XamarinFormsNavigation(Navigation), new CloudDataStore(), item);
             BindingContext = viewModel;
 
 			//Xamarin.Forms.MessagingCenter.Subscribe()

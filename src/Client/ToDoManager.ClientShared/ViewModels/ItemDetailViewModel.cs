@@ -13,9 +13,9 @@ namespace ToDoManager
 {
 	public class ItemDetailViewModel : BaseViewModel
 	{
-		private IDataStore<ToDoItemModel> DataStore; //TODO
-		INavigation _navigation;
-		public ToDoItemModel SelectedItem { get; set; }
+		private IDataStore<ToDoItemModel> _dataStore;
+		private INavigation _navigation;
+		private ToDoItemModel _selectedItem { get; set; }
 
 		//public BarChart PomodoroChart { get; set; }
 
@@ -48,12 +48,13 @@ namespace ToDoManager
 			}
 		}
 
-		public ItemDetailViewModel(INavigation navigation, ToDoItemModel item = null)
+		public ItemDetailViewModel(INavigation navigation, IDataStore<ToDoItemModel> dataStore, ToDoItemModel item = null)
 		{
-			//_navigation = navigation;
+			_dataStore = dataStore;
+			_navigation = navigation;
 			//PomodoroChart = new BarChart() { Entries = new List<Entry>() };
 			Title = item?.Title;
-			SelectedItem = item;
+			_selectedItem = item;
 			PopulateChart();
 
 			MessagingCenter.Subscribe<PomodoroViewModel, PomodoroItemModel>(Consts.AddNewToDoItemStr, (newPomodoroItem) =>
@@ -67,18 +68,20 @@ namespace ToDoManager
 
 			DoneButtonTouched = new Command(async () =>
 			{
-				var newItem = await DataStore.SetDoneTodo(SelectedItem.Id);
+				var newItem = await _dataStore.SetDoneTodo(_selectedItem.Id);
 
 				MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
 				await _navigation.PopAsync();	
 			});
 		}
 
+		public ToDoItemModel SelectedItem => this._selectedItem;
+
 		private async void PopulateChart()
 		{
 			try
 			{
-				Pomodoros = await pomodoroDataStorage.GetPomodorosForItem(SelectedItem.Id);
+				Pomodoros = await pomodoroDataStorage.GetPomodorosForItem(_selectedItem.Id);
 			}
 			catch
 			{
