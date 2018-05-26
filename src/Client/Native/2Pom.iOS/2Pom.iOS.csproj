@@ -84,6 +84,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -91,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -100,6 +104,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -108,6 +113,28 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\MainSplitViewController.cs" />
+    <Compile Include="ViewControllers\MainSplitViewController.designer.cs">
+      <DependentUpon>MainSplitViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\AllCategoriesTableViewController.cs" />
+    <Compile Include="ViewControllers\AllCategoriesTableViewController.designer.cs">
+      <DependentUpon>AllCategoriesTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ItemsViewController.cs" />
+    <Compile Include="ViewControllers\ItemsViewController.designer.cs">
+      <DependentUpon>ItemsViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">
+      <Project>{B8A19AE8-7461-4DBE-8400-57DB1C95BCE8}</Project>
+      <Name>ToDoManager.ClientShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj">
+      <Project>{9DCCB10E-9632-41FB-A347-A2B37D92D3DB}</Project>
+      <Name>ToDoManager.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

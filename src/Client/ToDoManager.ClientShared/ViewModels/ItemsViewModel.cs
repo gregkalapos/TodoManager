@@ -13,7 +13,7 @@ namespace ToDoManager
 {
 	public class ItemsViewModel : BaseViewModel
 	{
-		public ObservableCollection<ToDoItemModel> Items { get; set; }
+		public ObservableCollection<ToDoItemModel> ToDoItems { get; private set; }
 
 		/// <summary>
 		/// Loads the default item list (relevant, not done)
@@ -39,7 +39,7 @@ namespace ToDoManager
 		{
 			_dataStore = dataStore;
 			Title = "Browse";
-			Items = new ObservableCollection<ToDoItemModel>();
+			ToDoItems = new ObservableCollection<ToDoItemModel>();
 			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetItemsAsync(true)));
 			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetDoneTodoItems()));
 			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetAllTodoItems()));
@@ -47,18 +47,18 @@ namespace ToDoManager
 			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(Consts.AddNewToDoItemStr, (newTodoItem) =>
 			{
 				if(newTodoItem is ToDoItemModel todoItem)
-					Items.Insert(0, todoItem);
+					ToDoItems.Insert(0, todoItem);
 			});
 
 			MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(Consts.DoneTodoItemStr, (finishedItemMsg) =>
 			{
 				if (finishedItemMsg is ToDoItemModel finishedItem)
 				{
-					var itemToRemove = Items.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
+					var itemToRemove = ToDoItems.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
 
 					if (itemToRemove != null)
 					{
-						Items.Remove(itemToRemove);
+						ToDoItems.Remove(itemToRemove);
 					}
 				}
 			});
@@ -73,11 +73,11 @@ namespace ToDoManager
 
 			try
 			{
-				Items.Clear();
+				ToDoItems.Clear();
 				var items = await downloadMethod();
 				foreach (var item in items)
 				{
-					Items.Add(item);
+					ToDoItems.Add(item);
 				}
 			}
 			catch (Exception ex)
