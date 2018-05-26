@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using ToDoManager;
+using ToDoManager.Model;
 using UIKit;
 
 namespace Pom.iOS.ViewControllers
@@ -8,6 +9,7 @@ namespace Pom.iOS.ViewControllers
 	public partial class ItemsViewController : UIViewController
 	{
 		private ItemsViewModel _vm;
+		private TodoListSource _todoListSource;
 
 		public ItemsViewController(IntPtr handle) : base(handle)
 		{
@@ -17,7 +19,8 @@ namespace Pom.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 			_vm = new ItemsViewModel(new CloudDataStore());
-			TodoListTableView.Source = new TodoListSource(_vm);
+			_todoListSource = new TodoListSource(_vm, this);
+			TodoListTableView.Source = _todoListSource;
 
 			_vm.ToDoItems.CollectionChanged += (s, o) =>
 			{
@@ -35,23 +38,54 @@ namespace Pom.iOS.ViewControllers
 						break;
 				}
 			};
+
+			ItemSelectionOptionSegmentControl.ValueChanged += (s, o) =>
+			{
+				switch (ItemSelectionOptionSegmentControl.SelectedSegment)
+				{
+					case 0:
+						_vm.LoadItemsCommand.Execute(null);
+						break;
+					case 1:
+						_vm.LoadAllItemsCommand.Execute(null);
+						break;
+					case 2:
+						_vm.LoadDoneItemsCommand.Execute(null);
+						break;
+					default:
+						break;
+				} 
+			};
 			_vm.LoadItemsCommand.Execute(null);
 		}
 
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			var itemDetailViewController = segue.DestinationViewController as ItemDetailViewController;
+			itemDetailViewController.SelectedToDoItem = _todoListSource.SelectedTodoItem;
 		}
 
 		class TodoListSource : UITableViewSource
 		{
 			protected string cellIdentifier = "basicCell";
 			ItemsViewModel _vm;
+			ItemsViewController _parent;
 
-			public TodoListSource(ItemsViewModel vm)
+			public ToDoItemModel SelectedTodoItem
+			{
+				get;
+				private set;
+			}
+
+			public TodoListSource(ItemsViewModel vm, ItemsViewController parent)
 			{
 				_vm = vm;
+				_parent = parent;
 			}
 
 			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -65,6 +99,13 @@ namespace Pom.iOS.ViewControllers
 				cell.TextLabel.Text = _vm.ToDoItems[indexPath.Row].Title;
 
 				return cell;
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				SelectedTodoItem = _vm.ToDoItems[indexPath.Row];
+				_parent.PerformSegue("ToDoItemSelectedSegue", this);
+
 			}
 
 			public override nint RowsInSection(UITableView tableview, nint section)

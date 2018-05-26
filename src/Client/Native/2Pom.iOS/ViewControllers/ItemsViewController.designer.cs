@@ -16,10 +16,19 @@ namespace Pom.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISegmentedControl ItemSelectionOptionSegmentControl { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView TodoListTableView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (ItemSelectionOptionSegmentControl != null) {
+                ItemSelectionOptionSegmentControl.Dispose ();
+                ItemSelectionOptionSegmentControl = null;
+            }
+
             if (TodoListTableView != null) {
                 TodoListTableView.Dispose ();
                 TodoListTableView = null;

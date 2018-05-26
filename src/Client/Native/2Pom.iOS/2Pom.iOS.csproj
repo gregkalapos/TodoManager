@@ -95,6 +95,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="ViewControllers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -125,6 +126,11 @@
     <Compile Include="ViewControllers\ItemsViewController.designer.cs">
       <DependentUpon>ItemsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ItemDetailViewController.cs" />
+    <Compile Include="ViewControllers\ItemDetailViewController.designer.cs">
+      <DependentUpon>ItemDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IosNavigation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">
