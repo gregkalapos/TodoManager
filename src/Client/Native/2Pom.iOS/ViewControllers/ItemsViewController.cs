@@ -66,8 +66,12 @@ namespace Pom.iOS.ViewControllers
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
-			var itemDetailViewController = segue.DestinationViewController as ItemDetailViewController;
-			itemDetailViewController.SelectedToDoItem = _todoListSource.SelectedTodoItem;
+			//AddNewTodoTouchedSegue: New Todo touched
+			if (segue.Identifier == "ToDoItemSelectedSegue")
+			{
+				var itemDetailViewController = segue.DestinationViewController as ItemDetailViewController;
+				itemDetailViewController.SelectedToDoItem = _todoListSource.SelectedTodoItem;
+			}
 		}
 
 		class TodoListSource : UITableViewSource

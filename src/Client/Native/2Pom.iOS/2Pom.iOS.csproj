@@ -131,6 +131,10 @@
       <DependentUpon>ItemDetailViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\IosNavigation.cs" />
+    <Compile Include="ViewControllers\NewItemViewController.cs" />
+    <Compile Include="ViewControllers\NewItemViewController.designer.cs">
+      <DependentUpon>NewItemViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">
