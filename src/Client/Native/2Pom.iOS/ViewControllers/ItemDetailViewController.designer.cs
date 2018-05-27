@@ -16,7 +16,19 @@ namespace Pom.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel CreatedDateLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView DescriptionTextView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton DoneButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel TitleLabel { get; set; }
 
         [Action ("DoneButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,9 +36,24 @@ namespace Pom.iOS.ViewControllers
 
         void ReleaseDesignerOutlets ()
         {
+            if (CreatedDateLabel != null) {
+                CreatedDateLabel.Dispose ();
+                CreatedDateLabel = null;
+            }
+
+            if (DescriptionTextView != null) {
+                DescriptionTextView.Dispose ();
+                DescriptionTextView = null;
+            }
+
             if (DoneButton != null) {
                 DoneButton.Dispose ();
                 DoneButton = null;
+            }
+
+            if (TitleLabel != null) {
+                TitleLabel.Dispose ();
+                TitleLabel = null;
             }
         }
     }

@@ -30,7 +30,9 @@ namespace Pom.iOS.ViewControllers
 
 			_vm = new ItemDetailViewModel(new IosNavigation(this), new CloudDataStore(), SelectedToDoItem);
 			Title = _vm.SelectedItem.Title;
-				// Perform any additional setup after loading the view, typically from a nib.
+			TitleLabel.Text = _vm.SelectedItem.Title;
+			DescriptionTextView.Text = _vm.SelectedItem.Description;
+			CreatedDateLabel.Text = _vm.SelectedItem.Created.ToString();
 		}
 
 		public override void DidReceiveMemoryWarning()
