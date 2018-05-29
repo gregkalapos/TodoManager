@@ -1,4 +1,5 @@
 ﻿using System;
+using Foundation;
 using Pom.iOS.Services;
 using ToDoManager;
 using ToDoManager.Model;
@@ -22,6 +23,17 @@ namespace Pom.iOS.ViewControllers
 		ItemDetailViewModel _vm;
 		public ItemDetailViewController(IntPtr handle) : base(handle)
 		{
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			if(segue.Identifier == "StartPomodoroButtonTouchedSegue")
+			{
+				if (segue.DestinationViewController is PomodoroViewController targetVm ) 
+				{
+					targetVm.SelectedTodoItem = SelectedToDoItem;
+				}
+			}
 		}
 
 		public override void ViewDidLoad()

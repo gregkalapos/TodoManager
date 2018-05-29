@@ -135,6 +135,10 @@
     <Compile Include="ViewControllers\NewItemViewController.designer.cs">
       <DependentUpon>NewItemViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\PomodoroViewController.cs" />
+    <Compile Include="ViewControllers\PomodoroViewController.designer.cs">
+      <DependentUpon>PomodoroViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">
