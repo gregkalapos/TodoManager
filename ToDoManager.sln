@@ -16,15 +16,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.iOS", "src\Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.Uwp", "src\Client\ToDoManager.Uwp\ToDoManager.Uwp.csproj", "{AC0D51EE-2350-44BD-9A3F-D7F975147E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.MobileAppService", "src\Services\MobileAppService\ToDoManager.MobileAppService.csproj", "{18D5C9A8-6046-42C5-B305-60BED2B725D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoManager.MobileAppService", "src\Services\MobileAppService\ToDoManager.MobileAppService.csproj", "{18D5C9A8-6046-42C5-B305-60BED2B725D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.Data", "src\Services\ToDoManager.Data\ToDoManager.Data.csproj", "{76841F2D-335C-45FF-8201-C05741EFA548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoManager.Data", "src\Services\ToDoManager.Data\ToDoManager.Data.csproj", "{76841F2D-335C-45FF-8201-C05741EFA548}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.Model", "src\Shared\ToDoManager.Model\ToDoManager.Model.csproj", "{9DCCB10E-9632-41FB-A347-A2B37D92D3DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoManager.Model", "src\Shared\ToDoManager.Model\ToDoManager.Model.csproj", "{9DCCB10E-9632-41FB-A347-A2B37D92D3DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager.ClientShared", "src\Client\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj", "{B8A19AE8-7461-4DBE-8400-57DB1C95BCE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoManager.ClientShared", "src\Client\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj", "{B8A19AE8-7461-4DBE-8400-57DB1C95BCE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSharedUnitTests", "src\Test\ClientSharedUnitTests\ClientSharedUnitTests.csproj", "{CC9ADE87-4C41-4F21-9BF3-CB832BB4F0D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSharedUnitTests", "src\Test\ClientSharedUnitTests\ClientSharedUnitTests.csproj", "{CC9ADE87-4C41-4F21-9BF3-CB832BB4F0D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A50A9E24-6287-4965-98F7-C19F0F8BF8CC}"
 EndProject
@@ -34,12 +34,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2Pom.iOS", "src\Client\Nati
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{8E0BF0C2-D9F6-4F6F-A5A5-D1EA6BDBC916}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2Pom.Uwp", "src\Client\Native\2Pom.Uwp\2Pom.Uwp.csproj", "{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ToDoManager\ToDoManager.projitems*{2f0b11a5-c377-4626-b79b-6ca22eaed8d8}*SharedItemsImports = 4
-		ToDoManager\ToDoManager.projitems*{35b9d486-21ec-4d67-93ff-31db41d7e4d9}*SharedItemsImports = 4
-		ToDoManager\ToDoManager.projitems*{4df76cfc-c907-4c1e-991f-ead87c267c2a}*SharedItemsImports = 13
-		ToDoManager\ToDoManager.projitems*{ac0d51ee-2350-44bd-9a3f-d7f975147e2f}*SharedItemsImports = 4
+		src\Client\ToDoManager\ToDoManager.projitems*{2f0b11a5-c377-4626-b79b-6ca22eaed8d8}*SharedItemsImports = 4
+		src\Client\ToDoManager\ToDoManager.projitems*{35b9d486-21ec-4d67-93ff-31db41d7e4d9}*SharedItemsImports = 4
+		src\Client\ToDoManager\ToDoManager.projitems*{4df76cfc-c907-4c1e-991f-ead87c267c2a}*SharedItemsImports = 13
+		src\Client\ToDoManager\ToDoManager.projitems*{ac0d51ee-2350-44bd-9a3f-d7f975147e2f}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -272,6 +274,30 @@ Global
 		{5C0DC4F2-CF40-4AA2-9FFD-92B1E55F21A3}.Release|x64.Build.0 = Release|iPhoneSimulator
 		{5C0DC4F2-CF40-4AA2-9FFD-92B1E55F21A3}.Release|x86.ActiveCfg = Release|iPhoneSimulator
 		{5C0DC4F2-CF40-4AA2-9FFD-92B1E55F21A3}.Release|x86.Build.0 = Release|iPhoneSimulator
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|ARM.Build.0 = Debug|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|ARM.Deploy.0 = Debug|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|iPhone.ActiveCfg = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x64.ActiveCfg = Debug|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x64.Build.0 = Debug|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x64.Deploy.0 = Debug|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x86.ActiveCfg = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x86.Build.0 = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Debug|x86.Deploy.0 = Debug|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|Any CPU.ActiveCfg = Release|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|ARM.ActiveCfg = Release|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|ARM.Build.0 = Release|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|ARM.Deploy.0 = Release|ARM
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|iPhone.ActiveCfg = Release|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|iPhoneSimulator.ActiveCfg = Release|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x64.ActiveCfg = Release|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x64.Build.0 = Release|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x64.Deploy.0 = Release|x64
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x86.ActiveCfg = Release|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x86.Build.0 = Release|x86
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,6 +315,7 @@ Global
 		{EFEECC90-7783-4C47-99BA-0A31E8995A4E} = {A15C25CA-EDBB-4672-A372-B715E8342FFF}
 		{5C0DC4F2-CF40-4AA2-9FFD-92B1E55F21A3} = {EFEECC90-7783-4C47-99BA-0A31E8995A4E}
 		{8E0BF0C2-D9F6-4F6F-A5A5-D1EA6BDBC916} = {A15C25CA-EDBB-4672-A372-B715E8342FFF}
+		{AE71AA27-4F4C-4857-8E2D-4FCA258277C4} = {EFEECC90-7783-4C47-99BA-0A31E8995A4E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA95C0F7-E8FA-4EB7-B864-FE75915C66A0}
