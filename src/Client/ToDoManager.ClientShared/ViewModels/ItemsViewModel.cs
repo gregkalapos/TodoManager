@@ -8,11 +8,14 @@ using System.Collections.Generic;
 using ToDoManager.ClientShared.Tools;
 using ToDoManager.ViewModels;
 using ToDoManager.ClientShared;
+using ToDoManager.ClientShared.Services;
 
 namespace ToDoManager
 {
 	public class ItemsViewModel : BaseViewModel
 	{
+		private INavigation _navigation;
+
 		public ObservableCollection<ToDoItemModel> ToDoItems { get; private set; }
 
 		/// <summary>
@@ -33,11 +36,14 @@ namespace ToDoManager
 		/// <value>The load all items command.</value>
 		public Command LoadAllItemsCommand { get; }
 
+		public Command AddNewButtonTocuhed { get; }
+
 		private IDataStore<ToDoItemModel> _dataStore;
 
-		public ItemsViewModel(IDataStore<ToDoItemModel> dataStore)
+		public ItemsViewModel(IDataStore<ToDoItemModel> dataStore, INavigation navigation)
 		{
 			_dataStore = dataStore;
+			_navigation = navigation;
 			Title = "Browse";
 			ToDoItems = new ObservableCollection<ToDoItemModel>();
 			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetItemsAsync(true)));
@@ -61,6 +67,11 @@ namespace ToDoManager
 						ToDoItems.Remove(itemToRemove);
 					}
 				}
+			});
+
+			AddNewButtonTocuhed = new Command(() =>
+			{
+				_navigation.GoToNewItemPage();
 			});
 		}
 

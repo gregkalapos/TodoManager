@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using _2Pom.Uwp.Services;
 using _2Pom.Uwp.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -56,7 +57,8 @@ namespace _2Pom.Uwp
                     //TODO: Load state from previously suspended application
                 }
 
-                // Place the frame in the current Window
+				// Place the frame in the current Window
+				ServiceContainer.MainFrame = rootFrame;
                 Window.Current.Content = rootFrame;
             }
 

@@ -6,5 +6,7 @@ namespace ToDoManager.ClientShared.Services
 	public interface INavigation
 	{
 		Task PopAsync();
+
+		void GoToNewItemPage();
 	}
 }
