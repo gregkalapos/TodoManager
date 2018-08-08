@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ToDoManager.Model;
 
 namespace ToDoManager.ClientShared.Services
 {
@@ -8,5 +9,7 @@ namespace ToDoManager.ClientShared.Services
 		Task PopAsync();
 
 		void GoToNewItemPage();
+
+		void GoToItemDetailPage(ToDoItemModel selectedItem);
 	}
 }

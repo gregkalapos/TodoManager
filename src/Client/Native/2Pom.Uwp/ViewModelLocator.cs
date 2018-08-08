@@ -13,9 +13,12 @@ namespace _2Pom.Uwp
 	{
 		public ViewModelLocator()
 		{
-			ItemsViewModel = new ItemsViewModel(new CloudDataStore(), new UwpNavigationService());
+			ItemsViewModel = new ItemsViewModel(new CloudDataStore(), new UwpNavigationService(this));
+			ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this), new CloudDataStore());
 		}
 
 		public ItemsViewModel ItemsViewModel { get; set; }
+
+		public ItemDetailViewModel ItemDetailViewModel { get; set; }
 	}
 }

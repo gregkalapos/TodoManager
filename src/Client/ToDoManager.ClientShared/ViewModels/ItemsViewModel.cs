@@ -40,6 +40,14 @@ namespace ToDoManager
 
 		private IDataStore<ToDoItemModel> _dataStore;
 
+		public ToDoItemModel SelectedItem
+		{
+			set
+			{
+				_navigation.GoToItemDetailPage(value);
+			}
+		}
+
 		public ItemsViewModel(IDataStore<ToDoItemModel> dataStore, INavigation navigation)
 		{
 			_dataStore = dataStore;
@@ -52,7 +60,7 @@ namespace ToDoManager
 
 			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(Consts.AddNewToDoItemStr, (newTodoItem) =>
 			{
-				if(newTodoItem is ToDoItemModel todoItem)
+				if (newTodoItem is ToDoItemModel todoItem)
 					ToDoItems.Insert(0, todoItem);
 			});
 

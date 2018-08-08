@@ -17,7 +17,12 @@ namespace ToDoManager
 		private INavigation _navigation;
 		private ToDoItemModel _selectedItem { get; set; }
 
+		public String Title { get { return _selectedItem.Title; } }
+		public String Description { get { return _selectedItem.Description; } }
+
 		//public BarChart PomodoroChart { get; set; }
+
+		public Command BackButtonTouched { get; }
 
 		private IPomodoroDataStorage pomodoroDataStorage = new CloudPomodoroDataStorage();
 
@@ -53,7 +58,6 @@ namespace ToDoManager
 			_dataStore = dataStore;
 			_navigation = navigation;
 			//PomodoroChart = new BarChart() { Entries = new List<Entry>() };
-			Title = item?.Title;
 			_selectedItem = item;
 			PopulateChart();
 
@@ -71,7 +75,12 @@ namespace ToDoManager
 				var newItem = await _dataStore.SetDoneTodo(_selectedItem.Id);
 
 				MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
-				await _navigation.PopAsync();	
+				await _navigation.PopAsync();
+			});
+
+			BackButtonTouched = new Command(async () =>
+			{
+				await _navigation.PopAsync();
 			});
 		}
 

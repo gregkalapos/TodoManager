@@ -18,7 +18,6 @@ namespace ToDoManager.Services
         {
             client = new HttpClient();
             client.BaseAddress = new Uri($"{Consts.BackendUrl}/");
-
         }
 
         public async Task<PomodoroItemModel> AddNewPomodoroItemAsync(PomodoroItemModel newItem)
