@@ -109,7 +109,7 @@ namespace Pom.iOS.ViewControllers
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
 				SelectedTodoItem = _vm.ToDoItems[indexPath.Row];
-				_parent.PerformSegue("ToDoItemSelectedSegue", this);
+				_vm.SelectedItem = _vm.ToDoItems[indexPath.Row];
 			}
 
 			public override nint RowsInSection(UITableView tableview, nint section)

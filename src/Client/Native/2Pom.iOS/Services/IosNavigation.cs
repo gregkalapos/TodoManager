@@ -17,7 +17,7 @@ namespace Pom.iOS.Services
 
 		public void GoToItemDetailPage(ToDoItemModel selectedItem)
 		{
-			throw new NotImplementedException();
+			_viewController.PerformSegue("ToDoItemSelectedSegue", _viewController);
 		}
 
 		public void GoToNewItemPage()
