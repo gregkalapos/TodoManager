@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ToDoManager.ClientShared.Services;
+using ToDoManager.Model;
 using UIKit;
 
 namespace Pom.iOS.Services
@@ -12,6 +13,16 @@ namespace Pom.iOS.Services
 		public IosNavigation(UIViewController viewController)
 		{
 			_viewController = viewController;
+		}
+
+		public void GoToItemDetailPage(ToDoItemModel selectedItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void GoToNewItemPage()
+		{
+			throw new NotImplementedException();
 		}
 
 		public Task PopAsync()
