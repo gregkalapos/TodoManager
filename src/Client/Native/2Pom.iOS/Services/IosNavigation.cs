@@ -22,7 +22,7 @@ namespace Pom.iOS.Services
 
 		public void GoToNewItemPage()
 		{
-			throw new NotImplementedException();
+			//this one is implemented with a segue
 		}
 
 		public Task PopAsync()
