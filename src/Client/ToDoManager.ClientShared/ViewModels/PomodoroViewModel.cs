@@ -19,6 +19,13 @@ namespace ToDoManager.ViewModels
 
 		public ToDoItemModel SelectedItem { get; set; }
 
+		private String startStopButtonText = "Start";
+		public String StartStopButtonText
+		{
+			get => startStopButtonText;
+			private set => SetProperty(ref startStopButtonText,  value);
+		}
+
 		private ObservableCollection<String> pomodoroLengthOptions;
 		public ObservableCollection<String> PomodoroLengthOptions
 		{
@@ -57,7 +64,14 @@ namespace ToDoManager.ViewModels
 
 			StartButtonTouched = new Command(() =>
 			{
-				StartTimer();
+				if (!_isTimerRunning)
+				{
+					StartTimer();
+				}
+				else
+				{
+					StopTimer();
+				}
 			});
 		}
 
@@ -72,10 +86,18 @@ namespace ToDoManager.ViewModels
 			_numberOfInterruptions = 0;
 		}
 
+		private void StopTimer()
+		{
+			StartStopButtonText = "Start";
+			timerCancellationTokeSource.Cancel();
+			_isTimerRunning = false;
+			TimeLeftText = "Start Pomodoro";
+		}
+
 		private void StartTimer()
 		{
 			_remainingTime = TimeSpan.FromMinutes(ConvertPomodoroLengthStrToInt(SelectedPomodoroLength));
-
+			StartStopButtonText = "Stop";
 			_isTimerRunning = true;
 			timerCancellationTokeSource.Cancel();
 			timerCancellationTokeSource = new CancellationTokenSource();

@@ -16,6 +16,10 @@ namespace Pom.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIPickerView PomodoroLengthPicker { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton StartPomodoroButton { get; set; }
 
         [Outlet]
@@ -28,6 +32,11 @@ namespace Pom.iOS.ViewControllers
 
         void ReleaseDesignerOutlets ()
         {
+            if (PomodoroLengthPicker != null) {
+                PomodoroLengthPicker.Dispose ();
+                PomodoroLengthPicker = null;
+            }
+
             if (StartPomodoroButton != null) {
                 StartPomodoroButton.Dispose ();
                 StartPomodoroButton = null;
