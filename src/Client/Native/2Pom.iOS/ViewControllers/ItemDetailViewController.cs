@@ -45,6 +45,19 @@ namespace Pom.iOS.ViewControllers
 			TitleLabel.Text = _vm.SelectedItem.Title;
 			DescriptionTextView.Text = _vm.SelectedItem.Description;
 			CreatedDateLabel.Text = _vm.SelectedItem.Created.ToString();
+
+			if(_vm.SelectedItem.IsDone)
+			{
+				FinishedValueLabel.Text = _vm.SelectedItem.FinishedDate.ToString();
+
+				DoneButton.Hidden = true;
+				StartPomodoroButton.Hidden = true;
+			}
+			else
+			{
+				FinishedValueLabel.Hidden = true;
+				FinishedLabel.Hidden = true;
+			}
 		}
 
 		public override void DidReceiveMemoryWarning()

@@ -39,7 +39,7 @@ namespace Pom.iOS.ViewControllers
 						TimeRemainingLabel.Text = _vm.TimeLeftText;
 						break;
 					case nameof(_vm.StartStopButtonText):
-						StartPomodoroButton.SetTitle(_vm.StartStopButtonText, UIControlState.Normal);
+			 			StartPomodoroButton.SetTitle(_vm.StartStopButtonText, UIControlState.Normal);
 						break;
 					default:
 						break;

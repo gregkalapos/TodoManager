@@ -18,6 +18,27 @@ namespace ToDoManager
 
 		public ObservableCollection<ToDoItemModel> ToDoItems { get; private set; }
 
+		private int numberOfAllToDos;
+		public int NumberOfAllToDos
+		{
+			get => numberOfAllToDos;
+			set => SetProperty(ref numberOfAllToDos, value);
+		}
+
+		private int numberOfDoneToDos;
+		public int NumberOfDoneToDos
+		{
+			get => numberOfDoneToDos;
+			set => SetProperty(ref numberOfDoneToDos, value);
+		}
+
+		private int numberOfOpenToDos;
+		public int NumberOfOpenToDos
+		{
+			get => numberOfOpenToDos;
+			set => SetProperty(ref numberOfOpenToDos, value);
+		}
+
 		/// <summary>
 		/// Loads the default item list (relevant, not done)
 		/// </summary>
@@ -58,10 +79,24 @@ namespace ToDoManager
 			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetDoneTodoItems()));
 			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetAllTodoItems()));
 
+			Task.Factory.StartNew(async () =>
+			{
+				var allToDos = await _dataStore.GetAllTodoItems();
+
+				NumberOfAllToDos = allToDos.Count();
+				NumberOfDoneToDos = allToDos.Where(n => n.IsDone).Count();
+				NumberOfOpenToDos = NumberOfAllToDos - numberOfDoneToDos;
+
+			});
+
 			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(Consts.AddNewToDoItemStr, (newTodoItem) =>
 			{
 				if (newTodoItem is ToDoItemModel todoItem)
+				{
 					ToDoItems.Insert(0, todoItem);
+					NumberOfAllToDos++;
+					NumberOfOpenToDos++;
+				}
 			});
 
 			MessagingCenter.Subscribe<ItemDetailViewModel, ToDoItemModel>(Consts.DoneTodoItemStr, (finishedItemMsg) =>
@@ -73,6 +108,8 @@ namespace ToDoManager
 					if (itemToRemove != null)
 					{
 						ToDoItems.Remove(itemToRemove);
+						NumberOfDoneToDos++;
+						NumberOfOpenToDos--;
 					}
 				}
 			});

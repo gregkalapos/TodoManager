@@ -20,6 +20,18 @@ namespace Pom.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NumberOfAllToDosLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NumberOfDOneToDosLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NumberOfOpenTodosLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView TodoListTableView { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -27,6 +39,21 @@ namespace Pom.iOS.ViewControllers
             if (ItemSelectionOptionSegmentControl != null) {
                 ItemSelectionOptionSegmentControl.Dispose ();
                 ItemSelectionOptionSegmentControl = null;
+            }
+
+            if (NumberOfAllToDosLabel != null) {
+                NumberOfAllToDosLabel.Dispose ();
+                NumberOfAllToDosLabel = null;
+            }
+
+            if (NumberOfDOneToDosLabel != null) {
+                NumberOfDOneToDosLabel.Dispose ();
+                NumberOfDOneToDosLabel = null;
+            }
+
+            if (NumberOfOpenTodosLabel != null) {
+                NumberOfOpenTodosLabel.Dispose ();
+                NumberOfOpenTodosLabel = null;
             }
 
             if (TodoListTableView != null) {

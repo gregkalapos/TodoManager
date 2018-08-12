@@ -30,14 +30,26 @@ namespace Pom.iOS.ViewControllers
 
 			_vm.PropertyChanged += (s, o) =>
 			{
-				switch (o.PropertyName)
+				InvokeOnMainThread(() =>
 				{
-					case nameof(_vm.ToDoItems):
-						TodoListTableView.ReloadData();
-						break;
-					default:
-						break;
-				}
+					switch (o.PropertyName)
+					{
+						case nameof(_vm.ToDoItems):
+							TodoListTableView.ReloadData();
+							break;
+						case nameof(_vm.NumberOfAllToDos):
+							NumberOfAllToDosLabel.Text = _vm.NumberOfAllToDos.ToString();
+							break;
+						case nameof(_vm.NumberOfDoneToDos):
+							NumberOfDOneToDosLabel.Text = _vm.NumberOfDoneToDos.ToString();
+							break;
+						case nameof(_vm.NumberOfOpenToDos):
+							NumberOfOpenTodosLabel.Text = _vm.NumberOfOpenToDos.ToString();
+							break;
+						default:
+							break;
+					}
+				});
 			};
 
 			ItemSelectionOptionSegmentControl.ValueChanged += (s, o) =>

@@ -28,6 +28,18 @@ namespace Pom.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel FinishedLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel FinishedValueLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton StartPomodoroButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleLabel { get; set; }
 
         [Action ("DoneButton_TouchUpInside:")]
@@ -49,6 +61,21 @@ namespace Pom.iOS.ViewControllers
             if (DoneButton != null) {
                 DoneButton.Dispose ();
                 DoneButton = null;
+            }
+
+            if (FinishedLabel != null) {
+                FinishedLabel.Dispose ();
+                FinishedLabel = null;
+            }
+
+            if (FinishedValueLabel != null) {
+                FinishedValueLabel.Dispose ();
+                FinishedValueLabel = null;
+            }
+
+            if (StartPomodoroButton != null) {
+                StartPomodoroButton.Dispose ();
+                StartPomodoroButton = null;
             }
 
             if (TitleLabel != null) {
