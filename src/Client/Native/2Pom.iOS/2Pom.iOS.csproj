@@ -93,6 +93,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Auth">
+      <HintPath>..\..\..\..\packages\Xamarin.Auth.1.6.0.2\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -148,6 +152,10 @@
     <Compile Include="ViewControllers\PomodoroViewController.cs" />
     <Compile Include="ViewControllers\PomodoroViewController.designer.cs">
       <DependentUpon>PomodoroViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\AuthenticationViewController.cs" />
+    <Compile Include="ViewControllers\AuthenticationViewController.designer.cs">
+      <DependentUpon>AuthenticationViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

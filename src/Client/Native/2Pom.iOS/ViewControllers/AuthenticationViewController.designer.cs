@@ -11,19 +11,15 @@ using UIKit;
 
 namespace Pom.iOS.ViewControllers
 {
-    [Register ("AllCategoriesTableViewController")]
-    partial class AllCategoriesTableViewController
+    [Register ("AuthenticationViewController")]
+    partial class AuthenticationViewController
     {
-        [Outlet]
+        [Action ("UIButton18484_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView CategoriesTableView { get; set; }
+        partial void UIButton18484_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (CategoriesTableView != null) {
-                CategoriesTableView.Dispose ();
-                CategoriesTableView = null;
-            }
         }
     }
 }

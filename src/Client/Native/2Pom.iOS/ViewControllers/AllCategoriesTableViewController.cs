@@ -4,7 +4,7 @@ using UIKit;
 
 namespace Pom.iOS.ViewControllers
 {
-	public partial class AllCategoriesTableViewController : UITableViewController
+	public partial class AllCategoriesTableViewController : UIViewController
 	{
 		public AllCategoriesTableViewController(IntPtr handle): base(handle)
 		{
@@ -15,7 +15,7 @@ namespace Pom.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
-			this.TableView.Source = new TableSource();
+			CategoriesTableView.Source = new TableSource();
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
