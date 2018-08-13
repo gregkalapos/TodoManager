@@ -58,6 +58,24 @@ namespace Pom.iOS.ViewControllers
 				FinishedValueLabel.Hidden = true;
 				FinishedLabel.Hidden = true;
 			}
+
+			_vm.PropertyChanged += (sender, e) =>
+			{
+				InvokeOnMainThread(() =>
+				{
+					switch (e.PropertyName)
+					{
+						case nameof(_vm.NumberOfPomodoros):
+							NumberOfPomodorosValueLable.Text = _vm.NumberOfPomodoros.ToString();
+							break;
+						case nameof(_vm.MinsOfPomodoros):
+							NumberOfMinutesValueLabel.Text = _vm.MinsOfPomodoros.ToString();
+							break;
+						default:
+							break;
+					}
+				});
+			};
 		}
 
 		public override void DidReceiveMemoryWarning()

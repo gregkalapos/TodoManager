@@ -1,5 +1,6 @@
 ﻿using System;
 using ToDoManager.Model;
+using System.Linq;
 
 using ToDoManager.Services;
 using System.Threading.Tasks;
@@ -26,16 +27,25 @@ namespace ToDoManager
 
 		private IPomodoroDataStorage pomodoroDataStorage = new CloudPomodoroDataStorage();
 
-		private int numberOfPomodoros;
-
 		public Command DoneButtonTouched { get; }
 
+		private int numberOfPomodoros;
 		public int NumberOfPomodoros
 		{
 			get { return numberOfPomodoros; }
 			set
 			{
 				SetProperty(ref numberOfPomodoros, value);
+			}
+		}
+
+		private int minsOfPomodoros;
+		public int MinsOfPomodoros
+		{
+			get { return minsOfPomodoros; }
+			set
+			{
+				SetProperty(ref minsOfPomodoros, value);
 			}
 		}
 
@@ -49,6 +59,12 @@ namespace ToDoManager
 				if (pomodoros != null)
 				{
 					NumberOfPomodoros = pomodoros.Count;
+					MinsOfPomodoros = pomodoros.Sum(n => (n.LengthInSec / 60));
+				}
+				else
+				{
+					NumberOfPomodoros = 0;
+					MinsOfPomodoros = 0;
 				}
 			}
 		}
@@ -67,6 +83,7 @@ namespace ToDoManager
 				{
 					Pomodoros.Add(newItem);
 					NumberOfPomodoros++;
+					MinsOfPomodoros += (newItem.LengthInSec / 60);
 				}
 			});
 
@@ -94,32 +111,9 @@ namespace ToDoManager
 			}
 			catch
 			{
-				//TODO
+				NumberOfPomodoros = 0;
+				MinsOfPomodoros = 0;
 			}
-
-			//var entries = new[]
-			//{
-			//	new Entry(200)
-			//	{
-			//		Label = "January",
-			//		ValueLabel = "200",
-			//		Color = SKColor.Parse("#266489")
-			//	},
-			//	new Entry(400)
-			//	{
-			//	Label = "February",
-			//	ValueLabel = "400",
-			//	Color = SKColor.Parse("#68B9C0")
-			//	},
-			//	new Entry(-100)
-			//	{
-			//	Label = "March",
-			//	ValueLabel = "-100",
-			//	Color = SKColor.Parse("#90D585")
-			//	}
-			//};
-
-			//PomodoroChart.Entries = entries;
 		}
 	}
 }

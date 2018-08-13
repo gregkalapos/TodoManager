@@ -164,7 +164,7 @@ namespace ToDoManager.ViewModels
 				case "25min":
 					return 25;
 				default:
-					return 0.05;
+					return 5; //just for testing
 			}
 		}
 	}

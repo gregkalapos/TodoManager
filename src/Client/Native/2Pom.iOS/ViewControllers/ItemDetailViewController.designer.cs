@@ -36,6 +36,14 @@ namespace Pom.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NumberOfMinutesValueLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NumberOfPomodorosValueLable { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton StartPomodoroButton { get; set; }
 
         [Outlet]
@@ -71,6 +79,16 @@ namespace Pom.iOS.ViewControllers
             if (FinishedValueLabel != null) {
                 FinishedValueLabel.Dispose ();
                 FinishedValueLabel = null;
+            }
+
+            if (NumberOfMinutesValueLabel != null) {
+                NumberOfMinutesValueLabel.Dispose ();
+                NumberOfMinutesValueLabel = null;
+            }
+
+            if (NumberOfPomodorosValueLable != null) {
+                NumberOfPomodorosValueLable.Dispose ();
+                NumberOfPomodorosValueLable = null;
             }
 
             if (StartPomodoroButton != null) {
