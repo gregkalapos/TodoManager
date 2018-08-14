@@ -18,6 +18,10 @@ namespace Pom.iOS.ViewControllers
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView CategoriesTableView { get; set; }
 
+        [Action ("UIButton16868_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton16868_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (CategoriesTableView != null) {

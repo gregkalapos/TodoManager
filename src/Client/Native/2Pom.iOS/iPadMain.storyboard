@@ -446,7 +446,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue id="18535" destination="18480" kind="show"/>
+                                    <action selector="UIButton16868_TouchUpInside:" destination="16859" id="18804" eventType="touchUpInside"/>
+                                    <segue id="18843" destination="18480" kind="show"/>
                                 </connections>
                             </button>
                         </subviews>

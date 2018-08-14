@@ -25,6 +25,10 @@ namespace Pom.iOS.ViewControllers
 			_vm.StartAuthentication();
 
 			PresentViewController(_vm.OAuth2Authenticator.GetUI(),true, null);
+			_vm.AuthCompleted += (s, e) => 
+			{
+				this.DismissViewController(true, null);
+			};
 		}
 
 		public override void DidReceiveMemoryWarning()

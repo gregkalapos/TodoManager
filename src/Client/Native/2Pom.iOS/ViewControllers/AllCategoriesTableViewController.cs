@@ -6,6 +6,11 @@ namespace Pom.iOS.ViewControllers
 {
 	public partial class AllCategoriesTableViewController : UIViewController
 	{
+		partial void UIButton16868_TouchUpInside(UIButton sender)
+		{
+			
+		}
+
 		public AllCategoriesTableViewController(IntPtr handle): base(handle)
 		{
 			
