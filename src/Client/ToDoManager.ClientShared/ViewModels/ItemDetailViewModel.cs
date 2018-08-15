@@ -16,7 +16,7 @@ namespace ToDoManager
 	{
 		private IDataStore<ToDoItemModel> _dataStore;
 		private INavigation _navigation;
-		private ToDoItemModel _selectedItem { get; set; }
+		private ToDoItemModel _selectedItem;
 
 		public String Title { get { return _selectedItem.Title; } }
 		public String Description { get { return _selectedItem.Description; } }
@@ -69,11 +69,22 @@ namespace ToDoManager
 			}
 		}
 
+		private DateTime selectedScheduleDateTime;
+		public DateTime SelectedScheduleDateTime
+		{
+			get => selectedScheduleDateTime;
+			set => selectedScheduleDateTime = value;
+		}
+
+		public Command SaveScheduleButtonTouched
+		{
+			get;
+		}
+
 		public ItemDetailViewModel(INavigation navigation, IDataStore<ToDoItemModel> dataStore, ToDoItemModel item = null)
 		{
 			_dataStore = dataStore;
 			_navigation = navigation;
-			//PomodoroChart = new BarChart() { Entries = new List<Entry>() };
 			_selectedItem = item;
 			PopulateChart();
 
@@ -98,6 +109,11 @@ namespace ToDoManager
 			BackButtonTouched = new Command(async () =>
 			{
 				await _navigation.PopAsync();
+			});
+
+			SaveScheduleButtonTouched = new Command(() =>
+			{
+				SelectedItem.ScheduledFor = SelectedScheduleDateTime;
 			});
 		}
 

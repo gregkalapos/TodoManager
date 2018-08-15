@@ -157,6 +157,10 @@
     <Compile Include="ViewControllers\AuthenticationViewController.designer.cs">
       <DependentUpon>AuthenticationViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\SchedulePopOverViewController.cs" />
+    <Compile Include="ViewControllers\SchedulePopOverViewController.designer.cs">
+      <DependentUpon>SchedulePopOverViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ToDoManager.ClientShared\ToDoManager.ClientShared.csproj">

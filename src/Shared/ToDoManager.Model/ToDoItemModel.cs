@@ -10,5 +10,7 @@ namespace ToDoManager.Model
 		public Guid User { get; set; }
 		public Boolean IsDone { get; set; }
 		public DateTime FinishedDate { get; set; }
+
+		public DateTime? ScheduledFor { get; set; }
 	}
 }

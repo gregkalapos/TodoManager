@@ -20,6 +20,9 @@ namespace Pom.iOS.ViewControllers
 			get;
 			set;
 		}
+
+		public ItemDetailViewModel ViewModel => _vm;
+
 		ItemDetailViewModel _vm;
 		public ItemDetailViewController(IntPtr handle) : base(handle)
 		{
@@ -32,6 +35,13 @@ namespace Pom.iOS.ViewControllers
 				if (segue.DestinationViewController is PomodoroViewController targetVm ) 
 				{
 					targetVm.SelectedTodoItem = SelectedToDoItem;
+				}
+			}
+			if(segue.Identifier == "ShowSchedulePopOverSegue")
+			{
+				if (segue.DestinationViewController is SchedulePopOverViewController targetVm)
+				{
+					targetVm.ItemDetailViewController = this;
 				}
 			}
 		}
