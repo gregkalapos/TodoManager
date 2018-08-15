@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>2Pom.iOS</string>
+	<string>2Pom</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.kalapos.x2Pom-iOS</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,10 +23,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>iPadMain</string>
-<key>UIMainStoryboardFile~ipad</key>
-<string>iPadMain</string>
-<key>UIMainStoryboardFile~iphone</key>
-<string>iPhoneMain</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>iPadMain</string>
+	<key>UIMainStoryboardFile~iphone</key>
+	<string>iPhoneMain</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

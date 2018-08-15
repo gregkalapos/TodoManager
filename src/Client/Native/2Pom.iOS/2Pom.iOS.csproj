@@ -105,6 +105,8 @@
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo76x76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo152x152.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -171,6 +173,9 @@
       <Project>{9DCCB10E-9632-41FB-A347-A2B37D92D3DB}</Project>
       <Name>ToDoManager.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\2Pom logo 2048.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
