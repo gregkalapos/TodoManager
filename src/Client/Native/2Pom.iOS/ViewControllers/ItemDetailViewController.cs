@@ -62,12 +62,19 @@ namespace Pom.iOS.ViewControllers
 
 				DoneButton.Hidden = true;
 				StartPomodoroButton.Hidden = true;
+				ScheduleButton.Hidden = true;
+				ScheduledForLabel.Text = "Was scheduled for:";
 			}
 			else
 			{
 				FinishedValueLabel.Hidden = true;
 				FinishedLabel.Hidden = true;
 			}
+
+			if(_vm.SelectedItem.ScheduledFor.HasValue)
+				ShowUiForScheduledTodo();
+			else
+				ShowUiForUnscheduledTodo();
 
 			_vm.PropertyChanged += (sender, e) =>
 			{
@@ -86,6 +93,28 @@ namespace Pom.iOS.ViewControllers
 					}
 				});
 			};
+
+			_vm.ScheduleDateChanged += (sender, e) => 
+			{
+				if (e.HasValue)
+					ShowUiForScheduledTodo();
+				else
+					ShowUiForUnscheduledTodo();
+			};
+
+			void ShowUiForScheduledTodo()
+			{
+				ScheduleButton.SetTitle("Reschedule", UIControlState.Normal);
+				ScheduledForLabel.Hidden = false;
+				ScheduledForValueLabel.Hidden = false;
+				ScheduledForValueLabel.Text = ViewModel.SelectedItem.ScheduledFor.ToString();
+			}
+			void ShowUiForUnscheduledTodo()
+			{
+				ScheduleButton.SetTitle("Schedule", UIControlState.Normal);
+				ScheduledForLabel.Hidden = true;
+				ScheduledForValueLabel.Hidden = true;
+			}
 		}
 
 		public override void DidReceiveMemoryWarning()

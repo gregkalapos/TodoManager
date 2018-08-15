@@ -81,6 +81,8 @@ namespace ToDoManager
 			get;
 		}
 
+		public event EventHandler<DateTime?> ScheduleDateChanged;
+
 		public ItemDetailViewModel(INavigation navigation, IDataStore<ToDoItemModel> dataStore, ToDoItemModel item = null)
 		{
 			_dataStore = dataStore;
@@ -114,6 +116,7 @@ namespace ToDoManager
 			SaveScheduleButtonTouched = new Command(() =>
 			{
 				SelectedItem.ScheduledFor = SelectedScheduleDateTime;
+				ScheduleDateChanged?.Invoke(this,SelectedItem.ScheduledFor);
 			});
 		}
 

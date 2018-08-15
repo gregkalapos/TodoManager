@@ -48,6 +48,14 @@ namespace Pom.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel ScheduledForLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel ScheduledForValueLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton StartPomodoroButton { get; set; }
 
         [Outlet]
@@ -98,6 +106,16 @@ namespace Pom.iOS.ViewControllers
             if (ScheduleButton != null) {
                 ScheduleButton.Dispose ();
                 ScheduleButton = null;
+            }
+
+            if (ScheduledForLabel != null) {
+                ScheduledForLabel.Dispose ();
+                ScheduledForLabel = null;
+            }
+
+            if (ScheduledForValueLabel != null) {
+                ScheduledForValueLabel.Dispose ();
+                ScheduledForValueLabel = null;
             }
 
             if (StartPomodoroButton != null) {
