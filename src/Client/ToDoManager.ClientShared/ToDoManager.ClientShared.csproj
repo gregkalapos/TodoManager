@@ -8,6 +8,8 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Tools\" />
     <Folder Include="Services\" />
+    <Folder Include="LocalData\" />
+    <Folder Include="LocalData\Sync\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj" />
@@ -15,5 +17,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xamarin.Auth" Version="1.6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
   </ItemGroup>
 </Project>
