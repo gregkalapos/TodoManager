@@ -6,7 +6,7 @@ using ToDoManager.Model;
 
 namespace ToDoManager
 {
-	public class MockDataStore : IDataStore<ToDoItemModel>
+	public class MockDataStore : ITodoDataStore
 	{
 		List<ToDoItemModel> items;
 

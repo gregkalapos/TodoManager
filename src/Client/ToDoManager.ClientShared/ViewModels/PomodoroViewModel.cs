@@ -14,7 +14,7 @@ namespace ToDoManager.ViewModels
 {
 	public class PomodoroViewModel : BaseViewModel
 	{
-		private IPomodoroDataStorage _dataStorage = new CloudPomodoroDataStorage();
+		private IPomodoroDataStore _dataStorage = new CloudPomodoroDataStore();
 		private INavigation _navigation;
 
 		public ToDoItemModel SelectedItem { get; set; }

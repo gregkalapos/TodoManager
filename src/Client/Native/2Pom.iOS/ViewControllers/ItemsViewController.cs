@@ -19,7 +19,7 @@ namespace Pom.iOS.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			_vm = new ItemsViewModel(new CloudDataStore(), new IosNavigation(this));
+			_vm = new ItemsViewModel(new CloudTodoDataStore(), new IosNavigation(this));
 			_todoListSource = new TodoListSource(_vm, this);
 			TodoListTableView.Source = _todoListSource;
 

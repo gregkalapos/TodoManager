@@ -15,9 +15,9 @@ namespace ToDoManager.ViewModels
 		public Command SaveButtonTouched { get; }
 
 		private INavigation navigation;
-		private IDataStore<ToDoItemModel> _dataStore;
+		private ITodoDataStore _dataStore;
 
-		public NewItemViewModel(INavigation navigation, IDataStore<ToDoItemModel> dataStore)
+		public NewItemViewModel(INavigation navigation, ITodoDataStore dataStore)
 		{
 			this.navigation = navigation;
 			_dataStore = dataStore;

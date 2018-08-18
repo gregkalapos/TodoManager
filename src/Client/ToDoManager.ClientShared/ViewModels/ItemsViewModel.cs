@@ -59,7 +59,7 @@ namespace ToDoManager
 
 		public Command AddNewButtonTocuhed { get; }
 
-		private IDataStore<ToDoItemModel> _dataStore;
+		private ITodoDataStore _dataStore;
 
 		public ToDoItemModel SelectedItem
 		{
@@ -69,7 +69,7 @@ namespace ToDoManager
 			}
 		}
 
-		public ItemsViewModel(IDataStore<ToDoItemModel> dataStore, INavigation navigation)
+		public ItemsViewModel(ITodoDataStore dataStore, INavigation navigation)
 		{
 			_dataStore = dataStore;
 			_navigation = navigation;

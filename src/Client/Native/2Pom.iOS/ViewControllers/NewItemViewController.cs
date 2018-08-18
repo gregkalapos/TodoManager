@@ -25,7 +25,7 @@ namespace Pom.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
-			_vm = new NewItemViewModel(new IosNavigation(this), new CloudDataStore());
+			_vm = new NewItemViewModel(new IosNavigation(this), new CloudTodoDataStore());
 
 		}
 

@@ -14,7 +14,7 @@ namespace ToDoManager
 {
 	public class ItemDetailViewModel : BaseViewModel
 	{
-		private IDataStore<ToDoItemModel> _dataStore;
+		private ITodoDataStore _dataStore;
 		private INavigation _navigation;
 		private ToDoItemModel _selectedItem;
 
@@ -25,7 +25,7 @@ namespace ToDoManager
 
 		public Command BackButtonTouched { get; }
 
-		private IPomodoroDataStorage pomodoroDataStorage = new CloudPomodoroDataStorage();
+		private IPomodoroDataStore pomodoroDataStorage = new CloudPomodoroDataStore();
 
 		public Command DoneButtonTouched { get; }
 
@@ -83,7 +83,7 @@ namespace ToDoManager
 
 		public event EventHandler<DateTime?> ScheduleDateChanged;
 
-		public ItemDetailViewModel(INavigation navigation, IDataStore<ToDoItemModel> dataStore, ToDoItemModel item = null)
+		public ItemDetailViewModel(INavigation navigation, ITodoDataStore dataStore, ToDoItemModel item = null)
 		{
 			_dataStore = dataStore;
 			_navigation = navigation;

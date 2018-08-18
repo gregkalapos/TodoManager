@@ -10,11 +10,11 @@ using ToDoManager.Model;
 
 namespace ToDoManager.Services
 {
-    public class CloudPomodoroDataStorage : IPomodoroDataStorage
+    public class CloudPomodoroDataStore : IPomodoroDataStore
     {
         HttpClient client;
 
-        public CloudPomodoroDataStorage()
+        public CloudPomodoroDataStore()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri($"{Consts.BackendUrl}/");

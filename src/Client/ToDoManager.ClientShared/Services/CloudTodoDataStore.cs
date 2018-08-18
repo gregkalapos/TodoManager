@@ -11,12 +11,12 @@ using ToDoManager.ClientShared;
 
 namespace ToDoManager
 {
-	public class CloudDataStore : IDataStore<ToDoItemModel>
+	public class CloudTodoDataStore : ITodoDataStore
 	{
 		HttpClient client;
 		IEnumerable<ToDoItemModel> items;
 
-		public CloudDataStore()
+		public CloudTodoDataStore()
 		{
 			client = new HttpClient();
 			client.BaseAddress = new Uri($"{Consts.BackendUrl}/");

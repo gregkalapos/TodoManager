@@ -50,7 +50,7 @@ namespace Pom.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
-			_vm = new ItemDetailViewModel(new IosNavigation(this), new CloudDataStore(), SelectedToDoItem);
+			_vm = new ItemDetailViewModel(new IosNavigation(this), new CloudTodoDataStore(), SelectedToDoItem);
 			Title = _vm.SelectedItem.Title;
 			TitleLabel.Text = _vm.SelectedItem.Title;
 			DescriptionTextView.Text = _vm.SelectedItem.Description;

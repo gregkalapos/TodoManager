@@ -5,7 +5,7 @@ using ToDoManager.Model;
 
 namespace ToDoManager.Services
 {
-	public interface IPomodoroDataStorage
+	public interface IPomodoroDataStore
 	{
 		Task<PomodoroItemModel> AddNewPomodoroItemAsync(PomodoroItemModel newItem);
 
