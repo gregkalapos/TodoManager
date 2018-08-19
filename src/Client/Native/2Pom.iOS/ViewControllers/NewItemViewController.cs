@@ -1,6 +1,7 @@
 ﻿using System;
 using Pom.iOS.Services;
 using ToDoManager;
+using ToDoManager.ClientShared.Services.LocalData;
 using ToDoManager.ViewModels;
 using UIKit;
 
@@ -25,7 +26,7 @@ namespace Pom.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
-			_vm = new NewItemViewModel(new IosNavigation(this), new CloudTodoDataStore());
+			_vm = new NewItemViewModel(new IosNavigation(this), new LocalTodoDataStore());
 
 		}
 

@@ -10,6 +10,7 @@
     <Folder Include="Services\" />
     <Folder Include="LocalData\" />
     <Folder Include="LocalData\Sync\" />
+    <Folder Include="Services\LocalData\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj" />
@@ -18,5 +19,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xamarin.Auth" Version="1.6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
   </ItemGroup>
 </Project>

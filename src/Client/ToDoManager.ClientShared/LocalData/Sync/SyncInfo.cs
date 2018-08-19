@@ -6,6 +6,12 @@ namespace ToDoManager.ClientShared.LocalData.Sync
 	/// </summary>
 	public class SyncInfo
 	{
+		public int Id 
+		{
+			get;
+			set;
+		}
+
 		public int SyncRound
 		{
 			get;

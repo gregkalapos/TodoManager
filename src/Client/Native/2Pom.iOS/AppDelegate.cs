@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using Microsoft.EntityFrameworkCore;
+using ToDoManager.ClientShared.LocalData;
 using UIKit;
 
 namespace Pom.iOS
@@ -20,6 +22,9 @@ namespace Pom.iOS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+
+			SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_sqlite3());
+			(new ToDoDataContext()).Database.EnsureCreated();
 
 			return true;
 		}
