@@ -192,8 +192,12 @@
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo76x76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo152x152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo76x76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\2PomLogo152x152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

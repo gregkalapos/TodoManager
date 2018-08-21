@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _2Pom.Uwp.Views;
 using ToDoManager;
 using ToDoManager.ClientShared.Services;
+using ToDoManager.ClientShared.Services.LocalData;
 using ToDoManager.Model;
 using Windows.UI.Xaml.Controls;
 
@@ -27,7 +28,7 @@ namespace _2Pom.Uwp.Services
 
 		public void GoToItemDetailPage(ToDoItemModel selectedItem)
 		{
-			this.viewModelLocator.ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this.viewModelLocator), new CloudDataStore(), selectedItem);
+			this.viewModelLocator.ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this.viewModelLocator), new LocalTodoDataStore(), selectedItem);
 			ServiceContainer.MainFrame.Navigate(typeof(ItemDetailPage));
 		}
 

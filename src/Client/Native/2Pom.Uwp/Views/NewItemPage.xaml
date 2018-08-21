@@ -6,10 +6,36 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NewItemViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="NewItems" />
+        <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="NewItems" />-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Margin="25,15,25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Title:" />
+            <TextBox Text="{Binding NewItemTitle, Mode=TwoWay}" Grid.Column="1"  />
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="25,15,25,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Description:" />
+            <TextBox Text="{Binding NewItemDescription, Mode=TwoWay}" Grid.Row="1"  />
+        </Grid>
+
+        <Button Margin="0,25, 25,0" Content="Save" HorizontalAlignment="Right" Command="{Binding SaveButtonTouched}" Grid.Row="2" />
 
     </Grid>
 </Page>
