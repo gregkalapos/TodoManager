@@ -61,6 +61,8 @@ namespace ToDoManager
 
 		private ITodoDataStore _dataStore;
 
+		public override Command InitalizeViewModel { get; protected set; }
+
 		public ToDoItemModel SelectedItem
 		{
 			set
@@ -78,15 +80,21 @@ namespace ToDoManager
 			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetItemsAsync(true)));
 			LoadDoneItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetDoneTodoItems()));
 			LoadAllItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(() => _dataStore.GetAllTodoItems()));
-
-			Task.Factory.StartNew(async () =>
+			
+			InitalizeViewModel = new Command(async () =>
 			{
 				var allToDos = await _dataStore.GetAllTodoItems();
+
+				ToDoItems.Clear();
+
+				foreach (var item in allToDos)
+				{
+					ToDoItems.Add(item);
+				}
 
 				NumberOfAllToDos = allToDos.Count();
 				NumberOfDoneToDos = allToDos.Where(n => n.IsDone).Count();
 				NumberOfOpenToDos = NumberOfAllToDos - numberOfDoneToDos;
-
 			});
 
 			MessagingCenter.Subscribe<NewItemViewModel, ToDoItemModel>(Consts.AddNewToDoItemStr, (newTodoItem) =>
@@ -105,6 +113,7 @@ namespace ToDoManager
 				{
 					var itemToRemove = ToDoItems.Where(n => n.Id == finishedItem.Id).FirstOrDefault();
 
+					//TODO: only should remove if the currently selected view does not contain done items.
 					if (itemToRemove != null)
 					{
 						ToDoItems.Remove(itemToRemove);

@@ -40,9 +40,21 @@ namespace ToDoManager.ClientShared.Services.LocalData
 		public Task<IEnumerable<ToDoItemModel>> GetItemsAsync(bool forceRefresh = false)
 		=> Task.FromResult(toDoDataContext.Todos.ToList() as IEnumerable<ToDoItemModel>);
 
-		public Task<ToDoItemModel> SetDoneTodo(Guid id)
+		public async Task<ToDoItemModel> SetDoneTodo(Guid id)
 		{
-			throw new NotImplementedException();
+			var dbItem = toDoDataContext.Todos.Where(n => n.Id == id).FirstOrDefault();
+
+			if(dbItem == null)
+			{
+				throw new Exception($"{nameof(LocalTodoDataStore)}.{nameof(SetDoneTodo)} called with an id that is not contained in the database");
+			}
+
+			dbItem.IsDone = true;
+			dbItem.FinishedDate = DateTime.UtcNow;
+
+			await toDoDataContext.SaveChangesAsync();
+
+			return dbItem;
 		}
 	}
 }

@@ -24,9 +24,7 @@ namespace ToDoManager
 		//public BarChart PomodoroChart { get; set; }
 
 		public Command BackButtonTouched { get; }
-
-		private IPomodoroDataStore pomodoroDataStorage = new CloudPomodoroDataStore();
-
+		
 		public Command DoneButtonTouched { get; }
 
 		private int numberOfPomodoros;
@@ -103,9 +101,8 @@ namespace ToDoManager
 			DoneButtonTouched = new Command(async () =>
 			{
 				var newItem = await _dataStore.SetDoneTodo(_selectedItem.Id);
-
-				MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
 				await _navigation.PopAsync();
+				MessagingCenter.Send(this, Consts.DoneTodoItemStr, newItem);
 			});
 
 			BackButtonTouched = new Command(async () =>
@@ -124,15 +121,6 @@ namespace ToDoManager
 
 		private async void PopulateChart()
 		{
-			try
-			{
-				Pomodoros = await pomodoroDataStorage.GetPomodorosForItem(_selectedItem.Id);
-			}
-			catch
-			{
-				NumberOfPomodoros = 0;
-				MinsOfPomodoros = 0;
-			}
 		}
 	}
 }

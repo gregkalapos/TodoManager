@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ToDoManager.ClientShared.Tools;
 using ToDoManager.Model;
 
 namespace ToDoManager
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        bool isBusy = false;
+
+		/// <summary>
+		/// Needs to be called from the UI thread
+		/// Sets all UI element (Todos, #of todos, etc.)
+		/// </summary>
+		public virtual Command InitalizeViewModel { get; protected set; }
+
+		bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }

@@ -16,6 +16,8 @@
             </Button>
             <TextBlock  Margin="0,20,0,0" Text="{Binding Title}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}"/>
             <TextBlock Text="{Binding Description}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+            <Button Content="Done" Command="{Binding DoneButtonTouched}" />
         </StackPanel>
     </Grid>
 </Page>

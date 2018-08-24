@@ -32,7 +32,7 @@ namespace _2Pom.Uwp.Views
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			_vm.LoadAllItemsCommand.Execute(null);
+			_vm.InitalizeViewModel.Execute(null);
 		}
 	}
 }

@@ -12,11 +12,37 @@
     <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="9*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding ToDoItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="15">
+                <TextBlock Text="All:"/>
+                <TextBlock Margin="8,0,0,0" Text="{Binding NumberOfAllToDos}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="15">
+                <TextBlock Text="Open:"/>
+                <TextBlock Margin="8,0,0,0" Text="{Binding NumberOfOpenToDos}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="15">
+                <TextBlock Text="Done:"/>
+                <TextBlock Margin="8,0,0,0" Text="{Binding NumberOfDoneToDos}"/>
+            </StackPanel>
+
+        </Grid>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding ToDoItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}" />
@@ -24,6 +50,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button VerticalAlignment="Center" Command="{Binding AddNewButtonTocuhed}" HorizontalAlignment="Center" Grid.Row="1" Content="Add new "/>
+        <Button VerticalAlignment="Center" Command="{Binding AddNewButtonTocuhed}" HorizontalAlignment="Center" Grid.Row="2" Content="Add new "/>
     </Grid>
 </Page>
