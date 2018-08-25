@@ -22,6 +22,8 @@ namespace Pom.iOS.ViewControllers
 			detailView = Storyboard.InstantiateViewController("RootNavigationController") as UINavigationController; 
 			ViewControllers = new UIViewController[] { masterView, detailView };
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			//this.PreferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible;
 		}
 
 		public override void DidReceiveMemoryWarning()

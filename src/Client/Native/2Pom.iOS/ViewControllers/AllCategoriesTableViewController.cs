@@ -8,7 +8,7 @@ namespace Pom.iOS.ViewControllers
 	{
 		partial void UIButton16868_TouchUpInside(UIButton sender)
 		{
-			
+			this.SplitViewController.ShowDetailViewController(this.Storyboard.InstantiateViewController("LogInViewController"), null);
 		}
 
 		public AllCategoriesTableViewController(IntPtr handle): base(handle)

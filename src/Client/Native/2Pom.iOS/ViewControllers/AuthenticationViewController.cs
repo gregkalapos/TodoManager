@@ -6,6 +6,10 @@ namespace Pom.iOS.ViewControllers
 {
 	public partial class AuthenticationViewController : UIViewController
 	{
+		partial void UIButton26608_TouchUpInside(UIButton sender)
+		{
+			this.SplitViewController.ShowDetailViewController(Storyboard.InstantiateViewController("ItemsViewController"), null);
+		}
 
 		AuthenticationViewModel _vm;
 

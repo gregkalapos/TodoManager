@@ -18,6 +18,10 @@ namespace Pom.iOS.ViewControllers
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void UIButton18484_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("UIButton26608_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton26608_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
         }
