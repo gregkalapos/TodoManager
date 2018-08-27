@@ -8,6 +8,7 @@ using ToDoManager;
 using ToDoManager.ClientShared.Services;
 using ToDoManager.ClientShared.Services.LocalData;
 using ToDoManager.Model;
+using ToDoManager.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 namespace _2Pom.Uwp.Services
@@ -38,6 +39,12 @@ namespace _2Pom.Uwp.Services
 			 {
 				 ServiceContainer.MainFrame.GoBack();
 			 });
+		}
+
+		public void GoToPomodoroPage(ToDoItemModel selectedItem)
+		{
+			viewModelLocator.PomodoroViewModel = new PomodoroViewModel(selectedItem, new UwpNavigationService(viewModelLocator));
+			ServiceContainer.MainFrame.Navigate(typeof(PomodoroPage));
 		}
 	}
 }

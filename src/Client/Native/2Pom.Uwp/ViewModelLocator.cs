@@ -25,5 +25,7 @@ namespace _2Pom.Uwp
 		public ItemDetailViewModel ItemDetailViewModel { get; set; }
 
 		public NewItemViewModel NewItemViewModel { get; set; }
+
+		public PomodoroViewModel PomodoroViewModel { get; set; }
 	}
 }

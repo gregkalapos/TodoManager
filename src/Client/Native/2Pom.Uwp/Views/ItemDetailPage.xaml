@@ -18,6 +18,8 @@
             <TextBlock Text="{Binding Description}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0" Style="{StaticResource SubheaderTextBlockStyle}" />
 
             <Button Content="Done" Command="{Binding DoneButtonTouched}" />
+            <Button Content="Start Pomodoro" Command="{Binding StartPomodoroButtonTouched}" />
+            
         </StackPanel>
     </Grid>
 </Page>

@@ -11,5 +11,7 @@ namespace ToDoManager.ClientShared.Services
 		void GoToNewItemPage();
 
 		void GoToItemDetailPage(ToDoItemModel selectedItem);
+
+		void GoToPomodoroPage(ToDoItemModel selectedItem);
 	}
 }

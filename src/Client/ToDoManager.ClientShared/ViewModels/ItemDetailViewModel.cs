@@ -79,6 +79,8 @@ namespace ToDoManager
 			get;
 		}
 
+		public Command StartPomodoroButtonTouched { get; }
+
 		public event EventHandler<DateTime?> ScheduleDateChanged;
 
 		public ItemDetailViewModel(INavigation navigation, ITodoDataStore dataStore, ToDoItemModel item = null)
@@ -114,6 +116,11 @@ namespace ToDoManager
 			{
 				SelectedItem.ScheduledFor = SelectedScheduleDateTime;
 				ScheduleDateChanged?.Invoke(this,SelectedItem.ScheduledFor);
+			});
+
+			StartPomodoroButtonTouched = new Command(() =>
+			{
+				navigation.GoToPomodoroPage(SelectedItem);
 			});
 		}
 

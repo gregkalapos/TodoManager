@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Margin="25,15,25,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -35,7 +35,10 @@
             <TextBox Text="{Binding NewItemDescription, Mode=TwoWay}" Grid.Row="1"  />
         </Grid>
 
-        <Button Margin="0,25, 25,0" Content="Save" HorizontalAlignment="Right" Command="{Binding SaveButtonTouched}" Grid.Row="2" />
 
+        <StackPanel Grid.Row="2" Margin="0,25, 25,0" HorizontalAlignment="Right" >
+            <Button Content="Save" Command="{Binding SaveButtonTouched}" />
+            <Button Content="Cancel" Command="{Binding CancelButtonTouched}" />
+        </StackPanel>
     </Grid>
 </Page>

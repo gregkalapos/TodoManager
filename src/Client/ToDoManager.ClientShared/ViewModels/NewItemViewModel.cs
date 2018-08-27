@@ -13,6 +13,7 @@ namespace ToDoManager.ViewModels
 		public Boolean IsLoading { get; set; }
 
 		public Command SaveButtonTouched { get; }
+		public Command CancelButtonTouched { get; }
 
 		private INavigation navigation;
 		private ITodoDataStore _dataStore;
@@ -21,6 +22,7 @@ namespace ToDoManager.ViewModels
 		{
 			this.navigation = navigation;
 			_dataStore = dataStore;
+			CancelButtonTouched = new Command(async () => await navigation.PopAsync());
 			SaveButtonTouched = new Command(async () =>
 			{
 				try

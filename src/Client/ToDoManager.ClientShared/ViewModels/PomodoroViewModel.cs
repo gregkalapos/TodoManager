@@ -43,6 +43,8 @@ namespace ToDoManager.ViewModels
 			set { SetProperty(ref timeLeftTxt, value); }
 		}
 
+		public Command BackButtonTouched { get; }
+
 		private TimeSpan _remainingTime;
 
 		private int _numberOfInterruptions = 0;
@@ -72,6 +74,11 @@ namespace ToDoManager.ViewModels
 				{
 					StopTimer();
 				}
+			});
+
+			BackButtonTouched = new Command(async () =>
+			{
+				await _navigation.PopAsync();
 			});
 		}
 
