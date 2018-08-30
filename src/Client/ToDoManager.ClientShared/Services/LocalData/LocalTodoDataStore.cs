@@ -23,9 +23,18 @@ namespace ToDoManager.ClientShared.Services.LocalData
 			return tracker.Entity;
 		}
 
-		public Task<bool> DeleteItemAsync(Guid id)
+		public async Task<bool> DeleteItemAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			var itemToRemove = toDoDataContext.Todos.Where(n => n.Id == id).FirstOrDefault();
+
+			if (itemToRemove == null)
+				throw new Exception($"{nameof(LocalTodoDataStore)}.{nameof(DeleteItemAsync)} called with a non existing id";
+
+			toDoDataContext.Remove(itemToRemove);
+			//TODO: Remove related entities
+
+			var res = await toDoDataContext.SaveChangesAsync();
+			return res == 1;
 		}
 
 		public Task<IEnumerable<ToDoItemModel>> GetAllTodoItems()

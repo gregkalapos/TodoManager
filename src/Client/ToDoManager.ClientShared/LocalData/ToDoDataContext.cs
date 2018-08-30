@@ -12,6 +12,7 @@ namespace ToDoManager.ClientShared.LocalData
 		{
 			Mapper.Initialize(cfg => {
 				cfg.CreateMap<ToDoItemModel, TodoItemEntity>();
+				cfg.CreateMap<PomodoroItemModel, PomodoroItemEntity>();
 			});
 		}
 
@@ -21,6 +22,12 @@ namespace ToDoManager.ClientShared.LocalData
 		}
 
 		public DbSet<TodoItemEntity> Todos
+		{
+			get;
+			set;
+		}
+
+		public DbSet<PomodoroItemEntity> PomodoroItems
 		{
 			get;
 			set;

@@ -43,7 +43,7 @@ namespace _2Pom.Uwp.Services
 
 		public void GoToPomodoroPage(ToDoItemModel selectedItem)
 		{
-			viewModelLocator.PomodoroViewModel = new PomodoroViewModel(selectedItem, new UwpNavigationService(viewModelLocator));
+			viewModelLocator.PomodoroViewModel = new PomodoroViewModel(selectedItem, new UwpNavigationService(viewModelLocator), new LocalPomodoroDataStore());
 			ServiceContainer.MainFrame.Navigate(typeof(PomodoroPage));
 		}
 	}

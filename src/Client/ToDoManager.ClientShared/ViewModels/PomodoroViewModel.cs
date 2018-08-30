@@ -14,7 +14,7 @@ namespace ToDoManager.ViewModels
 {
 	public class PomodoroViewModel : BaseViewModel
 	{
-		private IPomodoroDataStore _dataStorage = new CloudPomodoroDataStore();
+		private IPomodoroDataStore _dataStorage;
 		private INavigation _navigation;
 
 		public ToDoItemModel SelectedItem { get; set; }
@@ -34,7 +34,7 @@ namespace ToDoManager.ViewModels
 		}
 		public String SelectedPomodoroLength { get; set; }
 
-		public Command StartButtonTouched;
+		public Command StartButtonTouched { get; }
 
 		private String timeLeftTxt = "Start Pomodoro";
 		public String TimeLeftText
@@ -51,7 +51,7 @@ namespace ToDoManager.ViewModels
 		private bool _isTimerRunning;
 		CancellationTokenSource timerCancellationTokeSource = new CancellationTokenSource();
 
-		public PomodoroViewModel(ToDoItemModel selectedItem, INavigation navigation)
+		public PomodoroViewModel(ToDoItemModel selectedItem, INavigation navigation, IPomodoroDataStore pomodoroDataStore)
 		{
 			_navigation = navigation;
 			PomodoroLengthOptions = new ObservableCollection<string> { "5min", "10min", "15min", "25min" };
@@ -78,6 +78,7 @@ namespace ToDoManager.ViewModels
 
 			BackButtonTouched = new Command(async () =>
 			{
+				StopTimer();
 				await _navigation.PopAsync();
 			});
 		}
@@ -104,6 +105,7 @@ namespace ToDoManager.ViewModels
 		private void StartTimer()
 		{
 			_remainingTime = TimeSpan.FromMinutes(ConvertPomodoroLengthStrToInt(SelectedPomodoroLength));
+			UpdateTimeLabel();
 			StartStopButtonText = "Stop";
 			_isTimerRunning = true;
 			timerCancellationTokeSource.Cancel();
@@ -116,11 +118,10 @@ namespace ToDoManager.ViewModels
 				{
 					while (_isTimerRunning)
 					{
-						await Task.Delay(1000);
-
 						cancellationToken.ThrowIfCancellationRequested();
 						UpdateTimeLabel();
 						_remainingTime -= TimeSpan.FromSeconds(1);
+						await Task.Delay(1000);
 
 						if (_remainingTime < TimeSpan.FromSeconds(0))
 						{
@@ -145,19 +146,20 @@ namespace ToDoManager.ViewModels
 							{
 
 							}
-							
 						}
 					}
 				}
 				catch (OperationCanceledException)
 				{
 				}
-
-				void UpdateTimeLabel() => TimeLeftText = $"{_remainingTime.Minutes}:{_remainingTime.Seconds.ToString("00")}";
 			}
-
+			void UpdateTimeLabel() => TimeLeftText = $"{_remainingTime.Minutes}:{_remainingTime.Seconds.ToString("00")}";
 		}
 
+		/// <summary>
+		/// </summary>
+		/// <param name="lenght"></param>
+		/// <returns>In minutes</returns>
 		private double ConvertPomodoroLengthStrToInt(String lenght)
 		{
 			switch (lenght)
@@ -171,7 +173,7 @@ namespace ToDoManager.ViewModels
 				case "25min":
 					return 25;
 				default:
-					return 5; //just for testing
+					return 0.05; //just for testing
 			}
 		}
 	}

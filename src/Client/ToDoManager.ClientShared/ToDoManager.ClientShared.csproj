@@ -7,10 +7,7 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Tools\" />
-    <Folder Include="Services\" />
-    <Folder Include="LocalData\" />
     <Folder Include="LocalData\Sync\" />
-    <Folder Include="Services\LocalData\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ToDoManager.Model\ToDoManager.Model.csproj" />

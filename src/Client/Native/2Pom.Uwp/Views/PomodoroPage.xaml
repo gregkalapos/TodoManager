@@ -18,8 +18,10 @@
         <AppBarButton Icon="Back" Command="{Binding BackButtonTouched}"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" >
+            <ComboBox ItemsSource="{Binding PomodoroLengthOptions}" SelectedItem="{Binding SelectedPomodoroLength, Mode=TwoWay}" />
+
             <TextBlock  HorizontalAlignment="Center" Text="{Binding TimeLeftText}" />
-            <Button Margin="0,45,0,0" Content="Start" HorizontalAlignment="Center" />
+            <Button Margin="0,45,0,0" Content="{Binding StartStopButtonText}" HorizontalAlignment="Center" Command="{Binding StartButtonTouched}" />
         </StackPanel>
     </Grid>
 </Page>
