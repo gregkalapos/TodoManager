@@ -15,6 +15,7 @@ namespace ToDoManager
 	public class ItemDetailViewModel : BaseViewModel
 	{
 		private ITodoDataStore _dataStore;
+		private readonly IPomodoroDataStore _pomodoroDataStore;
 		private INavigation _navigation;
 		private ToDoItemModel _selectedItem;
 
@@ -48,7 +49,7 @@ namespace ToDoManager
 		}
 
 		private List<PomodoroItemModel> pomodoros = new List<PomodoroItemModel>();
-		public List<PomodoroItemModel> Pomodoros
+		public List<PomodoroItemModel> Pomodori
 		{
 			get { return pomodoros; }
 			set
@@ -83,18 +84,22 @@ namespace ToDoManager
 
 		public event EventHandler<DateTime?> ScheduleDateChanged;
 
-		public ItemDetailViewModel(INavigation navigation, ITodoDataStore dataStore, ToDoItemModel item = null)
+		public Command initalizeViewModel;
+		public override Command InitalizeViewModel { get => initalizeViewModel; protected set => initalizeViewModel = value; }
+
+		public ItemDetailViewModel(INavigation navigation, ITodoDataStore dataStore, IPomodoroDataStore pomodoroDataStore, ToDoItemModel item = null)
 		{
-			_dataStore = dataStore;
-			_navigation = navigation;
-			_selectedItem = item;
+			this._dataStore = dataStore;
+			this._pomodoroDataStore = pomodoroDataStore;
+			this._navigation = navigation;
+			this._selectedItem = item;
 			PopulateChart();
 
 			MessagingCenter.Subscribe<PomodoroViewModel, PomodoroItemModel>(Consts.AddNewToDoItemStr, (newPomodoroItem) =>
 			{
 				if (newPomodoroItem is PomodoroItemModel newItem)
 				{
-					Pomodoros.Add(newItem);
+					Pomodori.Add(newItem);
 					NumberOfPomodoros++;
 					MinsOfPomodoros += (newItem.LengthInSec / 60);
 				}
@@ -122,6 +127,14 @@ namespace ToDoManager
 			{
 				navigation.GoToPomodoroPage(SelectedItem);
 			});
+
+			InitalizeViewModel = new Command(async()=>
+			{
+				if(SelectedItem != null)
+					Pomodori = await _pomodoroDataStore.GetPomodorosForItem(SelectedItem.Id);
+				else
+					throw new NotImplementedException($"{nameof(SelectedItem)} must be set before calling {nameof(InitalizeViewModel)} on an {nameof(ItemDetailViewModel)} instance");
+;			});
 		}
 
 		public ToDoItemModel SelectedItem => this._selectedItem;

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ToDoManager.ClientShared.LocalData;
 using ToDoManager.Model;
 using ToDoManager.Services;
@@ -24,9 +26,11 @@ namespace ToDoManager.ClientShared.Services.LocalData
 			return tracker.Entity;
 		}
 
-		public Task<List<PomodoroItemModel>> GetPomodorosForItem(Guid todoItemGuid)
+		public async Task<List<PomodoroItemModel>> GetPomodorosForItem(Guid todoItemGuid)
 		{
-			throw new NotImplementedException();
-		}
+		 	var items = await toDoDataContext.PomodoroItems.Where(n => n.ToDoItemGuid == todoItemGuid).ToListAsync();
+
+			return items.Select(n => n as PomodoroItemModel).ToList();
+		} 
 	}
 }

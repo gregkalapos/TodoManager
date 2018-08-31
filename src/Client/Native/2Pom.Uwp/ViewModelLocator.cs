@@ -16,7 +16,7 @@ namespace _2Pom.Uwp
 		public ViewModelLocator()
 		{
 			ItemsViewModel = new ItemsViewModel(new LocalTodoDataStore(), new UwpNavigationService(this));
-			ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this), new LocalTodoDataStore());
+			ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this), new LocalTodoDataStore(), new LocalPomodoroDataStore());
 			NewItemViewModel = new NewItemViewModel(new UwpNavigationService(this), new LocalTodoDataStore());
 		}
 

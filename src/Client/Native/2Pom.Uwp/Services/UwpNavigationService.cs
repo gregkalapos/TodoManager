@@ -29,7 +29,7 @@ namespace _2Pom.Uwp.Services
 
 		public void GoToItemDetailPage(ToDoItemModel selectedItem)
 		{
-			this.viewModelLocator.ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this.viewModelLocator), new LocalTodoDataStore(), selectedItem);
+			this.viewModelLocator.ItemDetailViewModel = new ItemDetailViewModel(new UwpNavigationService(this.viewModelLocator), new LocalTodoDataStore(), new LocalPomodoroDataStore(), selectedItem);
 			ServiceContainer.MainFrame.Navigate(typeof(ItemDetailPage));
 		}
 

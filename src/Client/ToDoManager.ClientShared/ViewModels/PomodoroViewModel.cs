@@ -53,6 +53,7 @@ namespace ToDoManager.ViewModels
 
 		public PomodoroViewModel(ToDoItemModel selectedItem, INavigation navigation, IPomodoroDataStore pomodoroDataStore)
 		{
+			_dataStorage = pomodoroDataStore;
 			_navigation = navigation;
 			PomodoroLengthOptions = new ObservableCollection<string> { "5min", "10min", "15min", "25min" };
 #if DEBUG

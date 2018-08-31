@@ -19,7 +19,13 @@
 
             <Button Content="Done" Command="{Binding DoneButtonTouched}" />
             <Button Content="Start Pomodoro" Command="{Binding StartPomodoroButtonTouched}" />
-            
+          
+            <Grid Margin="0,25,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Number of Pomodoros: " />
+                    <TextBlock Margin="3,0,0,0" Text="{Binding NumberOfPomodoros}"/>
+                </StackPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

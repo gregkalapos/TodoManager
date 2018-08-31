@@ -28,7 +28,7 @@ namespace ToDoManager.ClientShared.Services.LocalData
 			var itemToRemove = toDoDataContext.Todos.Where(n => n.Id == id).FirstOrDefault();
 
 			if (itemToRemove == null)
-				throw new Exception($"{nameof(LocalTodoDataStore)}.{nameof(DeleteItemAsync)} called with a non existing id";
+				throw new Exception($"{nameof(LocalTodoDataStore)}.{nameof(DeleteItemAsync)} called with a non existing id");
 
 			toDoDataContext.Remove(itemToRemove);
 			//TODO: Remove related entities
